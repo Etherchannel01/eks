@@ -43,15 +43,22 @@ variable "vpc_endpoints" {
 variable "eks_addons" { 
     description = "List of EKS addons to install"
     type        = list(string)
-    default = [
-        "vpc-cni",
-        "kube-proxy",
-        "aws-ebs-csi-driver",
-        "aws-efs-csi-driver",
-        "aws-mountpoint-s3-csi-driver",
-        "aws-guardduty-agent",
-        "amazon-cloudwatch-observability",
-        "eks-pod-identity-agent"
-    ]
+    default = []
+    
+  
+}
+
+
+variable "eks_scaling_config" {
+    description = "EKS scaling configuration"
+    type        = map(number)
+    default = {}
+  
+}
+
+variable "eks_update_config" {
+    description = "EKS update configuration"
+    type        = map(number)
+    default = {}
   
 }

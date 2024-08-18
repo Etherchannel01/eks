@@ -4,7 +4,24 @@ locals {
 availability_zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
 
 eid = substr(var.environment, 0, 1)
-  
+
+
+## EKS Cluster Configuration
+
+instance_types = "t3.medium"
+
+scaling_config = var.eks_scaling_config
+
+update_config  = var.eks_update_config
+
+eks_addons     = var.eks_addons
+
+
+
+
+
+
+
 ## EKS Private Subnets    
 
 eks_cidr_subnet_zone1 = cidrsubnet(var.vpc_cidr, 8, 0)  ## 10.0.0.0/24   Usable IP addresses 10.0.0.4 - 10.0.0.254

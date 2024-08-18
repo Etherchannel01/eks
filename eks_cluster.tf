@@ -33,16 +33,16 @@ resource "aws_eks_node_group" "eks_node_group" {
     aws_subnet.eks_private_subnet_zone3.id
     ]
     
-    instance_types  = [ "t3.medium" ]
+    instance_types  = [ local.instance_types ]
     
     scaling_config {
-    desired_size = 2
-    max_size     = 2
-    min_size     = 1
+    desired_size = local.scaling_config["desired_size"]
+    max_size     = local.scaling_config["max_size"]
+    min_size     = local.scaling_config["min_size"]
   }
 
   update_config {
-    max_unavailable = 1
+    max_unavailable = local.update_config["max_unavailable"]
   }
     depends_on = [ aws_iam_role_policy_attachment.AmazonEKSWorkerNodePolicy,
     aws_iam_role_policy_attachment.AmazonEKS_CNI_Policy,
