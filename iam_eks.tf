@@ -1,3 +1,7 @@
+##############################################
+#             IAM POLICY DOCUMENTS           #
+##############################################
+
 data "aws_iam_policy_document" "eks_assume_role" {
   statement {
     effect = "Allow"
@@ -332,16 +336,38 @@ data "aws_iam_policy_document" "AWSLoadBalancerControllerIAMPolicy" {
 }
 
 
+##############################################
+#             IAM POLICIES          #
+##############################################
+
+
 resource "aws_iam_policy" "AWSLoadBalancerControllerIAMPolicy" {
   name        = "${local.eid}-AWSLoadBalancerControllerIAMPolicy"
   description = "IAM policy for AWS Load Balancer Controller"
   policy      = data.aws_iam_policy_document.AWSLoadBalancerControllerIAMPolicy.json
   
 }
+
+
+##############################################
+#                IAM ROLES                   #
+##############################################
+
 resource "aws_iam_role" "eks_cluster_role" {
   name               = "${local.eid}-eks-cluster-role"
   assume_role_policy = data.aws_iam_policy_document.eks_assume_role.json
 }
+
+resource "aws_iam_role" "eks_node_group_role" {
+  name = "${local.eid}-eks-node-group-role"
+
+  assume_role_policy = data.aws_iam_policy_document.ec2_assume_role.json
+}
+
+
+##############################################
+#            IAM POLICY ATTACHMENTS          #
+##############################################
 
 resource "aws_iam_role_policy_attachment" "AmazonEKSClusterPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
@@ -353,23 +379,6 @@ resource "aws_iam_role_policy_attachment" "AmazonEKSClusterPolicy" {
 resource "aws_iam_role_policy_attachment" "AmazonEKSVPCResourceController" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
   role       = aws_iam_role.eks_cluster_role.name
-}
-
-
-
-
-
-
-
-
-
-
-
-
-resource "aws_iam_role" "eks_node_group_role" {
-  name = "${local.eid}-eks-node-group-role"
-
-  assume_role_policy = data.aws_iam_policy_document.ec2_assume_role.json
 }
 
 resource "aws_iam_role_policy_attachment" "AmazonEKSWorkerNodePolicy" {
