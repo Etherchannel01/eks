@@ -9,7 +9,7 @@ kind: Deployment
 metadata:
   namespace: game-2048
   name: deployment-2048
-spec:
+  spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: app-2048
@@ -20,11 +20,18 @@ spec:
         app.kubernetes.io/name: app-2048
     spec:
       containers:
-      - image: public.ecr.aws/l6m2t8p7/docker-2048:latest
-        imagePullPolicy: Always
-        name: app-2048
-        ports:
-        - containerPort: 80
+        - image: public.ecr.aws/l6m2t8p7/docker-2048:latest
+          imagePullPolicy: Always
+          name: app-2048
+          ports:
+          - containerPort: 80
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
 ---
 apiVersion: v1
 kind: Service
@@ -33,9 +40,9 @@ metadata:
   name: service-2048
 spec:
   ports:
-    - port: 80
-      targetPort: 80
-      protocol: TCP
+   - port: 80
+     targetPort: 80
+     protocol: TCP
   type: NodePort
   selector:
     app.kubernetes.io/name: app-2048

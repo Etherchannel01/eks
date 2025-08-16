@@ -40,12 +40,13 @@ variable "vpc_endpoints" {
   ]
 }
 
-variable "eks_addons" { 
-    description = "List of EKS addons to install"
-    type        = list(string)
-    default = []
-    
-  
+variable "eks_addons" {
+  description = "Map of EKS addons and their configurations"
+  type = map(object({
+    version = string
+  }))
+  default = {
+  }
 }
 
 

@@ -1,0 +1,230 @@
+name: eks-custom-component
+description: Install additional software for EKS nodes
+schemaVersion: "1.0"
+phases:
+  - name: build
+    steps:
+      - name: InstallDoDCertificates
+        action: ExecuteBash
+        inputs:
+          commands:
+            - |
+              echo "=== Downloading and Installing DoD Certificates ==="
+
+              # Define variables for better maintainability
+              DOD_URL="https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/unclass-certificates_pkcs7_DoD.zip"
+              WCF_URL="https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/unclass-certificates_pkcs7_WCF.zip"
+              WORK_DIR="/tmp/dod-certs"
+              TRUST_ANCHORS="/etc/pki/ca-trust/source/anchors"
+
+              # Curl options
+              CURL_OPTS=(
+                  --location
+                  --connect-timeout 30
+                  --max-time 300
+                  --retry 3
+                  --retry-delay 5
+                  --fail
+                  --silent
+                  --show-error
+              )
+
+              # Create working directory
+              mkdir -p "$WORK_DIR"
+              cd "$WORK_DIR"
+
+              # Function to download and verify
+              download_cert_bundle() {
+                  local url="$1"
+                  local filename="$2"
+                  
+                  echo "Downloading $filename..."
+                  if curl "${CURL_OPTS[@]}" -o "$filename" "$url"; then
+                      echo "[SUCCESS] Downloaded $filename"
+                      # Verify it's actually a zip file
+                      if ! file "$filename" | grep -q "Zip archive"; then
+                          echo "[ERROR] $filename is not a valid ZIP file"
+                          return 1
+                      fi
+                  else
+                      echo "[ERROR] Failed to download $filename"
+                      return 1
+                  fi
+              }
+
+              # Download both certificate bundles
+              download_cert_bundle "$DOD_URL" "unclass-certificates_pkcs7_DoD.zip" || exit 1
+              download_cert_bundle "$WCF_URL" "unclass-certificates_pkcs7_WCF.zip" || exit 1
+
+              # Function to extract and process certificates
+              process_cert_bundle() {
+                  local zip_file="$1"
+                  local expected_dir="$2"
+                  local p7b_file="$3"
+                  local output_pem="$4"
+                  
+                  echo "Processing $zip_file..."
+                  
+                  # Extract the zip file
+                  if ! unzip -q "$zip_file"; then
+                      echo "[ERROR] Failed to extract $zip_file"
+                      return 1
+                  fi
+                  
+                  # Verify expected directory exists
+                  if [ ! -d "$expected_dir" ]; then
+                      echo "[ERROR] Expected directory $expected_dir not found after extraction"
+                      echo "Available directories:"
+                      ls -la
+                      return 1
+                  fi
+                  
+                  cd "$expected_dir"
+                  
+                  # Verify P7B file exists
+                  if [ ! -f "$p7b_file" ]; then
+                      echo "[ERROR] P7B file $p7b_file not found"
+                      echo "Available files in $expected_dir:"
+                      ls -la
+                      cd ..
+                      return 1
+                  fi
+                  
+                  # Convert PKCS#7 to PEM format
+                  echo "Converting $p7b_file to PEM format..."
+                  if openssl pkcs7 -print_certs -in "$p7b_file" -out "$output_pem"; then
+                      echo "[SUCCESS] Converted $p7b_file to $output_pem"
+                      
+                      # Verify the PEM file contains certificates
+                      CERT_COUNT=$(grep -c "BEGIN CERTIFICATE" "$output_pem" 2>/dev/null || echo "0")
+                      if [ "$CERT_COUNT" -gt 0 ]; then
+                          echo "[INFO] Found $CERT_COUNT certificates in $output_pem"
+                      else
+                          echo "[ERROR] No certificates found in converted PEM file"
+                          cd ..
+                          return 1
+                      fi
+                      
+                      # Copy to trust anchors with descriptive name
+                      cp "$output_pem" "$TRUST_ANCHORS/"
+                      echo "[SUCCESS] Installed $output_pem to trust anchors"
+                  else
+                      echo "[ERROR] Failed to convert $p7b_file to PEM"
+                      cd ..
+                      return 1
+                  fi
+                  
+                  cd ..
+              }
+
+              # Process DoD certificates
+              process_cert_bundle \
+                  "unclass-certificates_pkcs7_DoD.zip" \
+                  "Certificates_PKCS7_v5_14_DoD" \
+                  "Certificates_PKCS7_v5_14_DoD.pem.p7b" \
+                  "DoD_Root_CAs.pem" || exit 1
+
+              # Process WCF certificates  
+              process_cert_bundle \
+                  "unclass-certificates_pkcs7_WCF.zip" \
+                  "Certificates_PKCS7_v5_17_WCF" \
+                  "Certificates_PKCS7_v5_17_WCF.pem.p7b" \
+                  "WCF_Root_CAs.pem" || exit 1
+
+              # Set proper permissions on all PEM files
+              echo "Setting permissions on certificate files..."
+              find "$TRUST_ANCHORS" -name "*.pem" -exec chmod 644 {} \;
+
+              # Verify we have some certificates installed
+              INSTALLED_CERTS=$(find "$TRUST_ANCHORS" -name "*.pem" | wc -l)
+              if [ "$INSTALLED_CERTS" -eq 0 ]; then
+                  echo "[ERROR] No certificate files found in trust anchors directory"
+                  exit 1
+              fi
+
+              echo "[INFO] Total PEM files in trust store: $INSTALLED_CERTS"
+
+              # Update the CA trust store
+              echo "Updating CA trust store..."
+              if update-ca-trust extract; then
+                  echo "[SUCCESS] CA trust store updated"
+              else
+                  echo "[ERROR] Failed to update CA trust store"
+                  exit 1
+              fi
+
+              # Verify the trust store was updated
+              if [ -f "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem" ]; then
+                  BUNDLE_SIZE=$(wc -l < /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem)
+                  echo "[INFO] Updated CA bundle contains $BUNDLE_SIZE lines"
+              else
+                  echo "[ERROR] CA bundle not found after update"
+                  exit 1
+              fi
+
+              # Cleanup working directory
+              echo "Cleaning up temporary files..."
+              cd /tmp
+              rm -rf "$WORK_DIR"
+
+              echo "[SUCCESS] DoD certificates successfully installed from official sources"
+      - name: PrepareAnsibleHardening
+        action: ExecuteBash
+        inputs:
+          commands:
+            - |
+              sudo yum update -y
+              sudo yum install -y git jq
+              sudo mkdir -p /ansible/roles/AMAZON-CIS
+              curl -fsSL https://goss.rocks/install | sh
+            - |
+              if [ ! -f /etc/os-release ]; then
+                echo "The file /etc/os-release does not exist on this system."
+                exit 1
+              fi
+              . /etc/os-release
+              if [ "$ID" = "amzn" ]; then
+                if [ "$VERSION_ID" = "2" ]; then
+                  echo "Installing Ansible on Amazon Linux 2..."
+                  sudo yum remove python3 -y
+                  sudo amazon-linux-extras install python3.8 -y
+                  sudo ln -s /usr/bin/python3.8 /usr/bin/python3
+                  sudo python3 -m pip install wheel
+                  sudo python3 -m pip install ansible
+                  sudo python3 -m pip install jmespath
+                  git clone https://github.com/ansible-lockdown/AMAZON2-CIS.git /ansible/roles/AMAZON-CIS
+                elif [ "$VERSION_ID" = "2023" ]; then
+                  echo "Installing Ansible on Amazon Linux 2023..."
+                  sudo yum install ansible -y
+                  git clone https://github.com/ansible-lockdown/AMAZON2023-CIS.git /ansible/roles/AMAZON-CIS
+                else
+                  echo "Unknown Amazon Linux version: $VERSION_ID"
+                  exit 1
+                fi
+              else
+                echo "This OS is not Amazon Linux."
+                exit 1
+              fi
+            - |
+              cat > /ansible/eks-cis.yml <<EOL
+              - name: CIS AL2 Benchmark
+                hosts: 127.0.0.1
+                connection: local
+                roles:
+                  - AMAZON-CIS
+              EOL
+      - name: InvokeAnsible
+        action: ExecuteBash
+        inputs:
+          commands:
+            - ansible-playbook /ansible/eks-cis.yml --extra-vars '{"amzn2023cis_syslog_service":"external","amzn2023cis_selinux_disable":true}' --skip-tags rule_1.1.2.3,rule_1.1.4.3,rule_1.2.1,rule_1.3.1,rule_1.3.3,firewalld,accounts,logrotate,rule_6.2.10
+      - name: DeletePlaybook
+        action: ExecuteBash
+        inputs:
+          commands:
+            - sudo rm -rf '/ansible'
+      - name: restartCloud-init
+        action: ExecuteBash
+        inputs:
+          commands:
+            - sudo cloud-init clean

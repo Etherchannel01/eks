@@ -9,6 +9,7 @@ resource "aws_eks_cluster" "eks_cluster" {
         aws_subnet.eks_private_subnet_zone3.id
         ]
         endpoint_private_access = true
+        endpoint_public_access  = false
     }
     version = var.eks_version
     tags = {
@@ -33,12 +34,15 @@ resource "aws_eks_node_group" "eks_node_group" {
     aws_subnet.eks_private_subnet_zone3.id
     ]
     
-    instance_types  = [ local.instance_types ]
     
     scaling_config {
     desired_size = local.scaling_config["desired_size"]
     max_size     = local.scaling_config["max_size"]
     min_size     = local.scaling_config["min_size"]
+  }
+  launch_template {
+    id      = aws_launch_template.eks_node_launch_template.id
+    version = "$Latest"
   }
 
   update_config {
@@ -58,11 +62,12 @@ resource "aws_eks_node_group" "eks_node_group" {
 }
 
 
-# resource "aws_eks_addon" "eks_addons" {
-#     for_each = toset(var.eks_addons)
-#     cluster_name = aws_eks_cluster.eks_cluster.name
-#     addon_name   = "${each.value}"
-#     depends_on = [aws_eks_cluster.eks_cluster]
-#     resolve_conflicts_on_update = "OVERWRITE"
+resource "aws_eks_addon" "eks_addons" {
+    for_each = var.eks_addons
+    addon_version     = each.value.version
+    cluster_name = aws_eks_cluster.eks_cluster.name
+    addon_name   = each.key
+    depends_on = [aws_eks_cluster.eks_cluster]
+    resolve_conflicts_on_update = "OVERWRITE"
   
-# }
+}
