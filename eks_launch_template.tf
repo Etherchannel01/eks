@@ -3,7 +3,7 @@ resource "aws_launch_template" "eks_node_launch_template" {
     name_prefix   = "${local.eid}-eks-node-launch-template"
     image_id      = "ami-05ec3f7f324a54c7f"
     instance_type = local.instance_types
-    user_data     = base64encode(templatefile("${path.module}/user_data.tpl", {
+    user_data     = base64encode(templatefile("${path.module}/userdata/user_data.tpl", {
         cluster_name          = local.cluster_name
         api_server_endpoint   = local.api_server_endpoint
         certificate_authority = local.certificate_authority

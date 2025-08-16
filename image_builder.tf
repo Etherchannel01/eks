@@ -81,7 +81,7 @@ resource "aws_imagebuilder_component" "eks_custom_component" {
   platform    = "Linux"
   version     = "1.0.0"
 
-  data = file("${path.module}/image-builder-component.yml")
+  data = file("${path.module}/userdata/image-builder-component.yml")
 
   tags = {
     Name = "${local.eid}-eks-custom-component"

@@ -11,7 +11,6 @@ phases:
             - |
               echo "=== Downloading and Installing DoD Certificates ==="
 
-              # Define variables for better maintainability
               DOD_URL="https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/unclass-certificates_pkcs7_DoD.zip"
               WCF_URL="https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/unclass-certificates_pkcs7_WCF.zip"
               WORK_DIR="/tmp/dod-certs"
