@@ -57,8 +57,8 @@ setup_log_volume() {
 }
 
 # Setup volumes
-#setup_log_volume /dev/xvdf /var/log
-#setup_log_volume /dev/xvdg /var/log/audit
+setup_log_volume /dev/xvdf /var/log
+setup_log_volume /dev/xvdg /var/log/audit
 setup_log_volume /dev/xvdh /tmp
 setup_log_volume /dev/xvdi /var/tmp
 
