@@ -1,0 +1,2138 @@
+[0m[1mdata.aws_ami.eks_worker_ami: Reading...[0m[0m
+[0m[1mdata.aws_caller_identity.current: Reading...[0m[0m
+[0m[1mdata.aws_iam_policy_document.eks_assume_role: Reading...[0m[0m
+[0m[1mdata.aws_region.current: Reading...[0m[0m
+[0m[1mdata.aws_region.current: Read complete after 0s [id=us-east-1][0m
+[0m[1mdata.aws_iam_policy_document.eks_assume_role: Read complete after 0s [id=3552664922][0m
+[0m[1mdata.aws_iam_policy_document.ec2_assume_role: Reading...[0m[0m
+[0m[1mdata.aws_iam_policy_document.ec2_assume_role: Read complete after 0s [id=2851119427][0m
+[0m[1mdata.aws_iam_policy_document.AWSLoadBalancerControllerIAMPolicy: Reading...[0m[0m
+[0m[1mdata.aws_iam_policy_document.AWSLoadBalancerControllerIAMPolicy: Read complete after 0s [id=3712473960][0m
+[0m[1mdata.aws_caller_identity.current: Read complete after 0s [id=290226690004][0m
+[0m[1mdata.aws_ami.eks_worker_ami: Read complete after 0s [id=ami-0fa03f713b55841a2][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+ [36m<=[0m read (data resources)[0m
+
+Terraform will perform the following actions:
+
+[1m  # data.aws_ami.eks_ami[0m will be read during apply
+  # (depends on a resource or a module with changes pending)
+[0m [36m<=[0m[0m data "aws_ami" "eks_ami" {
+      [32m+[0m[0m architecture          = (known after apply)
+      [32m+[0m[0m arn                   = (known after apply)
+      [32m+[0m[0m block_device_mappings = (known after apply)
+      [32m+[0m[0m boot_mode             = (known after apply)
+      [32m+[0m[0m creation_date         = (known after apply)
+      [32m+[0m[0m deprecation_time      = (known after apply)
+      [32m+[0m[0m description           = (known after apply)
+      [32m+[0m[0m ena_support           = (known after apply)
+      [32m+[0m[0m hypervisor            = (known after apply)
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m image_id              = (known after apply)
+      [32m+[0m[0m image_location        = (known after apply)
+      [32m+[0m[0m image_owner_alias     = (known after apply)
+      [32m+[0m[0m image_type            = (known after apply)
+      [32m+[0m[0m imds_support          = (known after apply)
+      [32m+[0m[0m kernel_id             = (known after apply)
+      [32m+[0m[0m last_launched_time    = (known after apply)
+      [32m+[0m[0m most_recent           = true
+      [32m+[0m[0m name                  = (known after apply)
+      [32m+[0m[0m owner_id              = (known after apply)
+      [32m+[0m[0m owners                = [
+          [32m+[0m[0m "self",
+        ]
+      [32m+[0m[0m platform              = (known after apply)
+      [32m+[0m[0m platform_details      = (known after apply)
+      [32m+[0m[0m product_codes         = (known after apply)
+      [32m+[0m[0m public                = (known after apply)
+      [32m+[0m[0m ramdisk_id            = (known after apply)
+      [32m+[0m[0m region                = (known after apply)
+      [32m+[0m[0m root_device_name      = (known after apply)
+      [32m+[0m[0m root_device_type      = (known after apply)
+      [32m+[0m[0m root_snapshot_id      = (known after apply)
+      [32m+[0m[0m sriov_net_support     = (known after apply)
+      [32m+[0m[0m state                 = (known after apply)
+      [32m+[0m[0m state_reason          = (known after apply)
+      [32m+[0m[0m tags                  = (known after apply)
+      [32m+[0m[0m tpm_support           = (known after apply)
+      [32m+[0m[0m usage_operation       = (known after apply)
+      [32m+[0m[0m virtualization_type   = (known after apply)
+
+      [32m+[0m[0m filter {
+          [32m+[0m[0m name   = "name"
+          [32m+[0m[0m values = [
+              [32m+[0m[0m "d_eks_custom_ami*",
+            ]
+        }
+    }
+
+[1m  # data.aws_eks_cluster.eks_cluster[0m will be read during apply
+  # (depends on a resource or a module with changes pending)
+[0m [36m<=[0m[0m data "aws_eks_cluster" "eks_cluster" {
+      [32m+[0m[0m access_config             = (known after apply)
+      [32m+[0m[0m arn                       = (known after apply)
+      [32m+[0m[0m certificate_authority     = (known after apply)
+      [32m+[0m[0m cluster_id                = (known after apply)
+      [32m+[0m[0m compute_config            = (known after apply)
+      [32m+[0m[0m created_at                = (known after apply)
+      [32m+[0m[0m deletion_protection       = (known after apply)
+      [32m+[0m[0m enabled_cluster_log_types = (known after apply)
+      [32m+[0m[0m endpoint                  = (known after apply)
+      [32m+[0m[0m id                        = (known after apply)
+      [32m+[0m[0m identity                  = (known after apply)
+      [32m+[0m[0m kubernetes_network_config = (known after apply)
+      [32m+[0m[0m name                      = "d-eks-cluster"
+      [32m+[0m[0m outpost_config            = (known after apply)
+      [32m+[0m[0m platform_version          = (known after apply)
+      [32m+[0m[0m region                    = (known after apply)
+      [32m+[0m[0m remote_network_config     = (known after apply)
+      [32m+[0m[0m role_arn                  = (known after apply)
+      [32m+[0m[0m status                    = (known after apply)
+      [32m+[0m[0m storage_config            = (known after apply)
+      [32m+[0m[0m tags                      = (known after apply)
+      [32m+[0m[0m upgrade_policy            = (known after apply)
+      [32m+[0m[0m version                   = (known after apply)
+      [32m+[0m[0m vpc_config                = (known after apply)
+      [32m+[0m[0m zonal_shift_config        = (known after apply)
+    }
+
+[1m  # aws_ecr_repository.eks_ecr[0m will be created
+[0m  [32m+[0m[0m resource "aws_ecr_repository" "eks_ecr" {
+      [32m+[0m[0m arn                  = (known after apply)
+      [32m+[0m[0m id                   = (known after apply)
+      [32m+[0m[0m image_tag_mutability = "MUTABLE"
+      [32m+[0m[0m name                 = "d-eks-ecr"
+      [32m+[0m[0m region               = "us-east-1"
+      [32m+[0m[0m registry_id          = (known after apply)
+      [32m+[0m[0m repository_url       = (known after apply)
+      [32m+[0m[0m tags_all             = (known after apply)
+
+      [32m+[0m[0m encryption_configuration {
+          [32m+[0m[0m encryption_type = "AES256"
+          [32m+[0m[0m kms_key         = (known after apply)
+        }
+
+      [32m+[0m[0m image_scanning_configuration {
+          [32m+[0m[0m scan_on_push = true
+        }
+    }
+
+[1m  # aws_eip.eks_eip_z1[0m will be created
+[0m  [32m+[0m[0m resource "aws_eip" "eks_eip_z1" {
+      [32m+[0m[0m allocation_id        = (known after apply)
+      [32m+[0m[0m arn                  = (known after apply)
+      [32m+[0m[0m association_id       = (known after apply)
+      [32m+[0m[0m carrier_ip           = (known after apply)
+      [32m+[0m[0m customer_owned_ip    = (known after apply)
+      [32m+[0m[0m domain               = (known after apply)
+      [32m+[0m[0m id                   = (known after apply)
+      [32m+[0m[0m instance             = (known after apply)
+      [32m+[0m[0m ipam_pool_id         = (known after apply)
+      [32m+[0m[0m network_border_group = (known after apply)
+      [32m+[0m[0m network_interface    = (known after apply)
+      [32m+[0m[0m private_dns          = (known after apply)
+      [32m+[0m[0m private_ip           = (known after apply)
+      [32m+[0m[0m ptr_record           = (known after apply)
+      [32m+[0m[0m public_dns           = (known after apply)
+      [32m+[0m[0m public_ip            = (known after apply)
+      [32m+[0m[0m public_ipv4_pool     = (known after apply)
+      [32m+[0m[0m region               = "us-east-1"
+      [32m+[0m[0m tags                 = {
+          [32m+[0m[0m "Name" = "d-eks-eip-z1"
+        }
+      [32m+[0m[0m tags_all             = {
+          [32m+[0m[0m "Name" = "d-eks-eip-z1"
+        }
+    }
+
+[1m  # aws_eip.eks_eip_z2[0m will be created
+[0m  [32m+[0m[0m resource "aws_eip" "eks_eip_z2" {
+      [32m+[0m[0m allocation_id        = (known after apply)
+      [32m+[0m[0m arn                  = (known after apply)
+      [32m+[0m[0m association_id       = (known after apply)
+      [32m+[0m[0m carrier_ip           = (known after apply)
+      [32m+[0m[0m customer_owned_ip    = (known after apply)
+      [32m+[0m[0m domain               = (known after apply)
+      [32m+[0m[0m id                   = (known after apply)
+      [32m+[0m[0m instance             = (known after apply)
+      [32m+[0m[0m ipam_pool_id         = (known after apply)
+      [32m+[0m[0m network_border_group = (known after apply)
+      [32m+[0m[0m network_interface    = (known after apply)
+      [32m+[0m[0m private_dns          = (known after apply)
+      [32m+[0m[0m private_ip           = (known after apply)
+      [32m+[0m[0m ptr_record           = (known after apply)
+      [32m+[0m[0m public_dns           = (known after apply)
+      [32m+[0m[0m public_ip            = (known after apply)
+      [32m+[0m[0m public_ipv4_pool     = (known after apply)
+      [32m+[0m[0m region               = "us-east-1"
+      [32m+[0m[0m tags                 = {
+          [32m+[0m[0m "Name" = "d-eks-eip-z2"
+        }
+      [32m+[0m[0m tags_all             = {
+          [32m+[0m[0m "Name" = "d-eks-eip-z2"
+        }
+    }
+
+[1m  # aws_eip.eks_eip_z3[0m will be created
+[0m  [32m+[0m[0m resource "aws_eip" "eks_eip_z3" {
+      [32m+[0m[0m allocation_id        = (known after apply)
+      [32m+[0m[0m arn                  = (known after apply)
+      [32m+[0m[0m association_id       = (known after apply)
+      [32m+[0m[0m carrier_ip           = (known after apply)
+      [32m+[0m[0m customer_owned_ip    = (known after apply)
+      [32m+[0m[0m domain               = (known after apply)
+      [32m+[0m[0m id                   = (known after apply)
+      [32m+[0m[0m instance             = (known after apply)
+      [32m+[0m[0m ipam_pool_id         = (known after apply)
+      [32m+[0m[0m network_border_group = (known after apply)
+      [32m+[0m[0m network_interface    = (known after apply)
+      [32m+[0m[0m private_dns          = (known after apply)
+      [32m+[0m[0m private_ip           = (known after apply)
+      [32m+[0m[0m ptr_record           = (known after apply)
+      [32m+[0m[0m public_dns           = (known after apply)
+      [32m+[0m[0m public_ip            = (known after apply)
+      [32m+[0m[0m public_ipv4_pool     = (known after apply)
+      [32m+[0m[0m region               = "us-east-1"
+      [32m+[0m[0m tags                 = {
+          [32m+[0m[0m "Name" = "d-eks-eip-z3"
+        }
+      [32m+[0m[0m tags_all             = {
+          [32m+[0m[0m "Name" = "d-eks-eip-z3"
+        }
+    }
+
+[1m  # aws_eks_addon.eks_addons["vpc-cni"][0m will be created
+[0m  [32m+[0m[0m resource "aws_eks_addon" "eks_addons" {
+      [32m+[0m[0m addon_name                  = "vpc-cni"
+      [32m+[0m[0m addon_version               = "v1.20.1-eksbuild.1"
+      [32m+[0m[0m arn                         = (known after apply)
+      [32m+[0m[0m cluster_name                = "d-eks-cluster"
+      [32m+[0m[0m configuration_values        = (known after apply)
+      [32m+[0m[0m created_at                  = (known after apply)
+      [32m+[0m[0m id                          = (known after apply)
+      [32m+[0m[0m modified_at                 = (known after apply)
+      [32m+[0m[0m region                      = "us-east-1"
+      [32m+[0m[0m resolve_conflicts_on_update = "OVERWRITE"
+      [32m+[0m[0m tags_all                    = (known after apply)
+    }
+
+[1m  # aws_eks_cluster.eks_cluster[0m will be created
+[0m  [32m+[0m[0m resource "aws_eks_cluster" "eks_cluster" {
+      [32m+[0m[0m arn                           = (known after apply)
+      [32m+[0m[0m bootstrap_self_managed_addons = true
+      [32m+[0m[0m certificate_authority         = (known after apply)
+      [32m+[0m[0m cluster_id                    = (known after apply)
+      [32m+[0m[0m created_at                    = (known after apply)
+      [32m+[0m[0m deletion_protection           = (known after apply)
+      [32m+[0m[0m endpoint                      = (known after apply)
+      [32m+[0m[0m id                            = (known after apply)
+      [32m+[0m[0m identity                      = (known after apply)
+      [32m+[0m[0m name                          = "d-eks-cluster"
+      [32m+[0m[0m platform_version              = (known after apply)
+      [32m+[0m[0m region                        = "us-east-1"
+      [32m+[0m[0m role_arn                      = (known after apply)
+      [32m+[0m[0m status                        = (known after apply)
+      [32m+[0m[0m tags                          = {
+          [32m+[0m[0m "Name" = "d-eks-cluster"
+        }
+      [32m+[0m[0m tags_all                      = {
+          [32m+[0m[0m "Name" = "d-eks-cluster"
+        }
+      [32m+[0m[0m version                       = "1.33"
+
+      [32m+[0m[0m access_config {
+          [32m+[0m[0m authentication_mode = "API"
+        }
+
+      [32m+[0m[0m kubernetes_network_config (known after apply)
+
+      [32m+[0m[0m upgrade_policy (known after apply)
+
+      [32m+[0m[0m vpc_config {
+          [32m+[0m[0m cluster_security_group_id = (known after apply)
+          [32m+[0m[0m endpoint_private_access   = true
+          [32m+[0m[0m endpoint_public_access    = false
+          [32m+[0m[0m public_access_cidrs       = (known after apply)
+          [32m+[0m[0m security_group_ids        = (known after apply)
+          [32m+[0m[0m subnet_ids                = (known after apply)
+          [32m+[0m[0m vpc_id                    = (known after apply)
+        }
+    }
+
+[1m  # aws_eks_node_group.eks_node_group[0m will be created
+[0m  [32m+[0m[0m resource "aws_eks_node_group" "eks_node_group" {
+      [32m+[0m[0m ami_type               = (known after apply)
+      [32m+[0m[0m arn                    = (known after apply)
+      [32m+[0m[0m capacity_type          = (known after apply)
+      [32m+[0m[0m cluster_name           = "d-eks-cluster"
+      [32m+[0m[0m disk_size              = (known after apply)
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m instance_types         = (known after apply)
+      [32m+[0m[0m node_group_name        = "d-eks-node-group"
+      [32m+[0m[0m node_group_name_prefix = (known after apply)
+      [32m+[0m[0m node_role_arn          = (known after apply)
+      [32m+[0m[0m region                 = "us-east-1"
+      [32m+[0m[0m release_version        = (known after apply)
+      [32m+[0m[0m resources              = (known after apply)
+      [32m+[0m[0m status                 = (known after apply)
+      [32m+[0m[0m subnet_ids             = (known after apply)
+      [32m+[0m[0m tags                   = {
+          [32m+[0m[0m "Name"                                = "d-eks-node-group"
+          [32m+[0m[0m "kubernetes.io/cluster/d-eks-cluster" = "owned"
+        }
+      [32m+[0m[0m tags_all               = {
+          [32m+[0m[0m "Name"                                = "d-eks-node-group"
+          [32m+[0m[0m "kubernetes.io/cluster/d-eks-cluster" = "owned"
+        }
+      [32m+[0m[0m version                = (known after apply)
+
+      [32m+[0m[0m launch_template {
+          [32m+[0m[0m id      = (known after apply)
+          [32m+[0m[0m name    = (known after apply)
+          [32m+[0m[0m version = (known after apply)
+        }
+
+      [32m+[0m[0m node_repair_config (known after apply)
+
+      [32m+[0m[0m scaling_config {
+          [32m+[0m[0m desired_size = 1
+          [32m+[0m[0m max_size     = 1
+          [32m+[0m[0m min_size     = 1
+        }
+
+      [32m+[0m[0m update_config {
+          [32m+[0m[0m max_unavailable = 1
+        }
+    }
+
+[1m  # aws_iam_instance_profile.image_builder_instance_profile[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_instance_profile" "image_builder_instance_profile" {
+      [32m+[0m[0m arn         = (known after apply)
+      [32m+[0m[0m create_date = (known after apply)
+      [32m+[0m[0m id          = (known after apply)
+      [32m+[0m[0m name        = "d_image_builder_instance_profile"
+      [32m+[0m[0m name_prefix = (known after apply)
+      [32m+[0m[0m path        = "/"
+      [32m+[0m[0m role        = "d_image_builder_instance_role"
+      [32m+[0m[0m tags        = {
+          [32m+[0m[0m "Name" = "d_image_builder_instance_profile"
+        }
+      [32m+[0m[0m tags_all    = {
+          [32m+[0m[0m "Name" = "d_image_builder_instance_profile"
+        }
+      [32m+[0m[0m unique_id   = (known after apply)
+    }
+
+[1m  # aws_iam_policy.AWSLoadBalancerControllerIAMPolicy[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_policy" "AWSLoadBalancerControllerIAMPolicy" {
+      [32m+[0m[0m arn              = (known after apply)
+      [32m+[0m[0m attachment_count = (known after apply)
+      [32m+[0m[0m description      = "IAM policy for AWS Load Balancer Controller"
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m name             = "d-AWSLoadBalancerControllerIAMPolicy"
+      [32m+[0m[0m name_prefix      = (known after apply)
+      [32m+[0m[0m path             = "/"
+      [32m+[0m[0m policy           = jsonencode(
+            {
+              [32m+[0m[0m Statement = [
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action    = "iam:CreateServiceLinkedRole"
+                      [32m+[0m[0m Condition = {
+                          [32m+[0m[0m StringEquals = {
+                              [32m+[0m[0m "iam:AWSServiceName" = "elasticloadbalancing.amazonaws.com"
+                            }
+                        }
+                      [32m+[0m[0m Effect    = "Allow"
+                      [32m+[0m[0m Resource  = "*"
+                    },
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action   = [
+                          [32m+[0m[0m "elasticloadbalancing:DescribeTrustStores",
+                          [32m+[0m[0m "elasticloadbalancing:DescribeTargetHealth",
+                          [32m+[0m[0m "elasticloadbalancing:DescribeTargetGroups",
+                          [32m+[0m[0m "elasticloadbalancing:DescribeTargetGroupAttributes",
+                          [32m+[0m[0m "elasticloadbalancing:DescribeTags",
+                          [32m+[0m[0m "elasticloadbalancing:DescribeSSLPolicies",
+                          [32m+[0m[0m "elasticloadbalancing:DescribeRules",
+                          [32m+[0m[0m "elasticloadbalancing:DescribeLoadBalancers",
+                          [32m+[0m[0m "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                          [32m+[0m[0m "elasticloadbalancing:DescribeListeners",
+                          [32m+[0m[0m "elasticloadbalancing:DescribeListenerCertificates",
+                          [32m+[0m[0m "ec2:GetCoipPoolUsage",
+                          [32m+[0m[0m "ec2:DescribeVpcs",
+                          [32m+[0m[0m "ec2:DescribeVpcPeeringConnections",
+                          [32m+[0m[0m "ec2:DescribeTags",
+                          [32m+[0m[0m "ec2:DescribeSubnets",
+                          [32m+[0m[0m "ec2:DescribeSecurityGroups",
+                          [32m+[0m[0m "ec2:DescribeNetworkInterfaces",
+                          [32m+[0m[0m "ec2:DescribeInternetGateways",
+                          [32m+[0m[0m "ec2:DescribeInstances",
+                          [32m+[0m[0m "ec2:DescribeCoipPools",
+                          [32m+[0m[0m "ec2:DescribeAvailabilityZones",
+                          [32m+[0m[0m "ec2:DescribeAddresses",
+                          [32m+[0m[0m "ec2:DescribeAccountAttributes",
+                        ]
+                      [32m+[0m[0m Effect   = "Allow"
+                      [32m+[0m[0m Resource = "*"
+                    },
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action   = [
+                          [32m+[0m[0m "wafv2:GetWebACLForResource",
+                          [32m+[0m[0m "wafv2:GetWebACL",
+                          [32m+[0m[0m "wafv2:DisassociateWebACL",
+                          [32m+[0m[0m "wafv2:AssociateWebACL",
+                          [32m+[0m[0m "waf-regional:GetWebACLForResource",
+                          [32m+[0m[0m "waf-regional:GetWebACL",
+                          [32m+[0m[0m "waf-regional:DisassociateWebACL",
+                          [32m+[0m[0m "waf-regional:AssociateWebACL",
+                          [32m+[0m[0m "shield:GetSubscriptionState",
+                          [32m+[0m[0m "shield:DescribeProtection",
+                          [32m+[0m[0m "shield:DeleteProtection",
+                          [32m+[0m[0m "shield:CreateProtection",
+                          [32m+[0m[0m "iam:ListServerCertificates",
+                          [32m+[0m[0m "iam:GetServerCertificate",
+                          [32m+[0m[0m "cognito-idp:DescribeUserPoolClient",
+                          [32m+[0m[0m "acm:ListCertificates",
+                          [32m+[0m[0m "acm:DescribeCertificate",
+                        ]
+                      [32m+[0m[0m Effect   = "Allow"
+                      [32m+[0m[0m Resource = "*"
+                    },
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action   = [
+                          [32m+[0m[0m "ec2:RevokeSecurityGroupIngress",
+                          [32m+[0m[0m "ec2:AuthorizeSecurityGroupIngress",
+                        ]
+                      [32m+[0m[0m Effect   = "Allow"
+                      [32m+[0m[0m Resource = "*"
+                    },
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action   = "ec2:CreateSecurityGroup"
+                      [32m+[0m[0m Effect   = "Allow"
+                      [32m+[0m[0m Resource = "*"
+                    },
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action    = "ec2:CreateTags"
+                      [32m+[0m[0m Condition = {
+                          [32m+[0m[0m Null         = {
+                              [32m+[0m[0m "aws:RequestTag/elbv2.k8s.aws/cluster" = "false"
+                            }
+                          [32m+[0m[0m StringEquals = {
+                              [32m+[0m[0m "ec2:CreateAction" = "CreateSecurityGroup"
+                            }
+                        }
+                      [32m+[0m[0m Effect    = "Allow"
+                      [32m+[0m[0m Resource  = "arn:aws:ec2:*:*:security-group/*"
+                    },
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action    = [
+                          [32m+[0m[0m "ec2:DeleteTags",
+                          [32m+[0m[0m "ec2:CreateTags",
+                        ]
+                      [32m+[0m[0m Condition = {
+                          [32m+[0m[0m Null = {
+                              [32m+[0m[0m "aws:RequestTag/elbv2.k8s.aws/cluster"  = "true"
+                              [32m+[0m[0m "aws:ResourceTag/elbv2.k8s.aws/cluster" = "false"
+                            }
+                        }
+                      [32m+[0m[0m Effect    = "Allow"
+                      [32m+[0m[0m Resource  = "arn:aws:ec2:*:*:security-group/*"
+                    },
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action    = [
+                          [32m+[0m[0m "ec2:RevokeSecurityGroupIngress",
+                          [32m+[0m[0m "ec2:DeleteSecurityGroup",
+                          [32m+[0m[0m "ec2:AuthorizeSecurityGroupIngress",
+                        ]
+                      [32m+[0m[0m Condition = {
+                          [32m+[0m[0m Null = {
+                              [32m+[0m[0m "aws:ResourceTag/elbv2.k8s.aws/cluster" = "false"
+                            }
+                        }
+                      [32m+[0m[0m Effect    = "Allow"
+                      [32m+[0m[0m Resource  = "*"
+                    },
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action    = [
+                          [32m+[0m[0m "elasticloadbalancing:CreateTargetGroup",
+                          [32m+[0m[0m "elasticloadbalancing:CreateLoadBalancer",
+                        ]
+                      [32m+[0m[0m Condition = {
+                          [32m+[0m[0m Null = {
+                              [32m+[0m[0m "aws:RequestTag/elbv2.k8s.aws/cluster" = "false"
+                            }
+                        }
+                      [32m+[0m[0m Effect    = "Allow"
+                      [32m+[0m[0m Resource  = "*"
+                    },
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action   = [
+                          [32m+[0m[0m "elasticloadbalancing:DeleteRule",
+                          [32m+[0m[0m "elasticloadbalancing:DeleteListener",
+                          [32m+[0m[0m "elasticloadbalancing:CreateRule",
+                          [32m+[0m[0m "elasticloadbalancing:CreateListener",
+                        ]
+                      [32m+[0m[0m Effect   = "Allow"
+                      [32m+[0m[0m Resource = "*"
+                    },
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action    = [
+                          [32m+[0m[0m "elasticloadbalancing:RemoveTags",
+                          [32m+[0m[0m "elasticloadbalancing:AddTags",
+                        ]
+                      [32m+[0m[0m Condition = {
+                          [32m+[0m[0m Null = {
+                              [32m+[0m[0m "aws:RequestTag/elbv2.k8s.aws/cluster"  = "true"
+                              [32m+[0m[0m "aws:ResourceTag/elbv2.k8s.aws/cluster" = "false"
+                            }
+                        }
+                      [32m+[0m[0m Effect    = "Allow"
+                      [32m+[0m[0m Resource  = [
+                          [32m+[0m[0m "arn:aws:elasticloadbalancing:*:*:targetgroup/*/*",
+                          [32m+[0m[0m "arn:aws:elasticloadbalancing:*:*:loadbalancer/net/*/*",
+                          [32m+[0m[0m "arn:aws:elasticloadbalancing:*:*:loadbalancer/app/*/*",
+                        ]
+                    },
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action   = [
+                          [32m+[0m[0m "elasticloadbalancing:RemoveTags",
+                          [32m+[0m[0m "elasticloadbalancing:AddTags",
+                        ]
+                      [32m+[0m[0m Effect   = "Allow"
+                      [32m+[0m[0m Resource = [
+                          [32m+[0m[0m "arn:aws:elasticloadbalancing:*:*:listener/net/*/*/*",
+                          [32m+[0m[0m "arn:aws:elasticloadbalancing:*:*:listener/app/*/*/*",
+                          [32m+[0m[0m "arn:aws:elasticloadbalancing:*:*:listener-rule/net/*/*/*",
+                          [32m+[0m[0m "arn:aws:elasticloadbalancing:*:*:listener-rule/app/*/*/*",
+                        ]
+                    },
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action    = [
+                          [32m+[0m[0m "elasticloadbalancing:SetSubnets",
+                          [32m+[0m[0m "elasticloadbalancing:SetSecurityGroups",
+                          [32m+[0m[0m "elasticloadbalancing:SetIpAddressType",
+                          [32m+[0m[0m "elasticloadbalancing:ModifyTargetGroupAttributes",
+                          [32m+[0m[0m "elasticloadbalancing:ModifyTargetGroup",
+                          [32m+[0m[0m "elasticloadbalancing:ModifyLoadBalancerAttributes",
+                          [32m+[0m[0m "elasticloadbalancing:DeleteTargetGroup",
+                          [32m+[0m[0m "elasticloadbalancing:DeleteLoadBalancer",
+                        ]
+                      [32m+[0m[0m Condition = {
+                          [32m+[0m[0m Null = {
+                              [32m+[0m[0m "aws:ResourceTag/elbv2.k8s.aws/cluster" = "false"
+                            }
+                        }
+                      [32m+[0m[0m Effect    = "Allow"
+                      [32m+[0m[0m Resource  = "*"
+                    },
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action    = "elasticloadbalancing:AddTags"
+                      [32m+[0m[0m Condition = {
+                          [32m+[0m[0m Null         = {
+                              [32m+[0m[0m "aws:RequestTag/elbv2.k8s.aws/cluster" = "false"
+                            }
+                          [32m+[0m[0m StringEquals = {
+                              [32m+[0m[0m "elasticloadbalancing:CreateAction" = [
+                                  [32m+[0m[0m "CreateTargetGroup",
+                                  [32m+[0m[0m "CreateLoadBalancer",
+                                ]
+                            }
+                        }
+                      [32m+[0m[0m Effect    = "Allow"
+                      [32m+[0m[0m Resource  = [
+                          [32m+[0m[0m "arn:aws:elasticloadbalancing:*:*:targetgroup/*/*",
+                          [32m+[0m[0m "arn:aws:elasticloadbalancing:*:*:loadbalancer/net/*/*",
+                          [32m+[0m[0m "arn:aws:elasticloadbalancing:*:*:loadbalancer/app/*/*",
+                        ]
+                    },
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action   = [
+                          [32m+[0m[0m "elasticloadbalancing:RegisterTargets",
+                          [32m+[0m[0m "elasticloadbalancing:DeregisterTargets",
+                        ]
+                      [32m+[0m[0m Effect   = "Allow"
+                      [32m+[0m[0m Resource = "arn:aws:elasticloadbalancing:*:*:targetgroup/*/*"
+                    },
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action   = [
+                          [32m+[0m[0m "elasticloadbalancing:SetWebAcl",
+                          [32m+[0m[0m "elasticloadbalancing:RemoveListenerCertificates",
+                          [32m+[0m[0m "elasticloadbalancing:ModifyRule",
+                          [32m+[0m[0m "elasticloadbalancing:ModifyListener",
+                          [32m+[0m[0m "elasticloadbalancing:AddListenerCertificates",
+                        ]
+                      [32m+[0m[0m Effect   = "Allow"
+                      [32m+[0m[0m Resource = "*"
+                    },
+                ]
+              [32m+[0m[0m Version   = "2012-10-17"
+            }
+        )
+      [32m+[0m[0m policy_id        = (known after apply)
+      [32m+[0m[0m tags_all         = (known after apply)
+    }
+
+[1m  # aws_iam_role.eks_cluster_role[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role" "eks_cluster_role" {
+      [32m+[0m[0m arn                   = (known after apply)
+      [32m+[0m[0m assume_role_policy    = jsonencode(
+            {
+              [32m+[0m[0m Statement = [
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action    = "sts:AssumeRole"
+                      [32m+[0m[0m Effect    = "Allow"
+                      [32m+[0m[0m Principal = {
+                          [32m+[0m[0m Service = "eks.amazonaws.com"
+                        }
+                    },
+                ]
+              [32m+[0m[0m Version   = "2012-10-17"
+            }
+        )
+      [32m+[0m[0m create_date           = (known after apply)
+      [32m+[0m[0m force_detach_policies = false
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m managed_policy_arns   = (known after apply)
+      [32m+[0m[0m max_session_duration  = 3600
+      [32m+[0m[0m name                  = "d-eks-cluster-role"
+      [32m+[0m[0m name_prefix           = (known after apply)
+      [32m+[0m[0m path                  = "/"
+      [32m+[0m[0m tags_all              = (known after apply)
+      [32m+[0m[0m unique_id             = (known after apply)
+
+      [32m+[0m[0m inline_policy (known after apply)
+    }
+
+[1m  # aws_iam_role.eks_node_group_role[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role" "eks_node_group_role" {
+      [32m+[0m[0m arn                   = (known after apply)
+      [32m+[0m[0m assume_role_policy    = jsonencode(
+            {
+              [32m+[0m[0m Statement = [
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action    = "sts:AssumeRole"
+                      [32m+[0m[0m Effect    = "Allow"
+                      [32m+[0m[0m Principal = {
+                          [32m+[0m[0m Service = "ec2.amazonaws.com"
+                        }
+                    },
+                ]
+              [32m+[0m[0m Version   = "2012-10-17"
+            }
+        )
+      [32m+[0m[0m create_date           = (known after apply)
+      [32m+[0m[0m force_detach_policies = false
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m managed_policy_arns   = (known after apply)
+      [32m+[0m[0m max_session_duration  = 3600
+      [32m+[0m[0m name                  = "d-eks-node-group-role"
+      [32m+[0m[0m name_prefix           = (known after apply)
+      [32m+[0m[0m path                  = "/"
+      [32m+[0m[0m tags_all              = (known after apply)
+      [32m+[0m[0m unique_id             = (known after apply)
+
+      [32m+[0m[0m inline_policy (known after apply)
+    }
+
+[1m  # aws_iam_role.image_builder_instance_role[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role" "image_builder_instance_role" {
+      [32m+[0m[0m arn                   = (known after apply)
+      [32m+[0m[0m assume_role_policy    = jsonencode(
+            {
+              [32m+[0m[0m Statement = [
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action    = "sts:AssumeRole"
+                      [32m+[0m[0m Effect    = "Allow"
+                      [32m+[0m[0m Principal = {
+                          [32m+[0m[0m Service = "ec2.amazonaws.com"
+                        }
+                    },
+                ]
+              [32m+[0m[0m Version   = "2012-10-17"
+            }
+        )
+      [32m+[0m[0m create_date           = (known after apply)
+      [32m+[0m[0m force_detach_policies = false
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m managed_policy_arns   = (known after apply)
+      [32m+[0m[0m max_session_duration  = 3600
+      [32m+[0m[0m name                  = "d_image_builder_instance_role"
+      [32m+[0m[0m name_prefix           = (known after apply)
+      [32m+[0m[0m path                  = "/"
+      [32m+[0m[0m tags                  = {
+          [32m+[0m[0m "Name" = "d_image_builder_instance_role"
+        }
+      [32m+[0m[0m tags_all              = {
+          [32m+[0m[0m "Name" = "d_image_builder_instance_role"
+        }
+      [32m+[0m[0m unique_id             = (known after apply)
+
+      [32m+[0m[0m inline_policy (known after apply)
+    }
+
+[1m  # aws_iam_role_policy_attachment.AmazonEC2ContainerRegistryReadOnly[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+      [32m+[0m[0m role       = "d-eks-node-group-role"
+    }
+
+[1m  # aws_iam_role_policy_attachment.AmazonEKSClusterPolicy[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "AmazonEKSClusterPolicy" {
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+      [32m+[0m[0m role       = "d-eks-cluster-role"
+    }
+
+[1m  # aws_iam_role_policy_attachment.AmazonEKSVPCResourceController[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "AmazonEKSVPCResourceController" {
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
+      [32m+[0m[0m role       = "d-eks-cluster-role"
+    }
+
+[1m  # aws_iam_role_policy_attachment.AmazonEKSWorkerNodePolicy[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "AmazonEKSWorkerNodePolicy" {
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+      [32m+[0m[0m role       = "d-eks-node-group-role"
+    }
+
+[1m  # aws_iam_role_policy_attachment.AmazonEKS_CNI_Policy[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "AmazonEKS_CNI_Policy" {
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+      [32m+[0m[0m role       = "d-eks-node-group-role"
+    }
+
+[1m  # aws_iam_role_policy_attachment.image_builder_instance_profile_policy[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "image_builder_instance_profile_policy" {
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m policy_arn = "arn:aws:iam::aws:policy/EC2InstanceProfileForImageBuilder"
+      [32m+[0m[0m role       = "d_image_builder_instance_role"
+    }
+
+[1m  # aws_iam_role_policy_attachment.ssm_managed_instance_core[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "ssm_managed_instance_core" {
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+      [32m+[0m[0m role       = "d_image_builder_instance_role"
+    }
+
+[1m  # aws_imagebuilder_component.eks_custom_component[0m will be created
+[0m  [32m+[0m[0m resource "aws_imagebuilder_component" "eks_custom_component" {
+      [32m+[0m[0m arn          = (known after apply)
+      [32m+[0m[0m data         = <<-EOT
+            name: eks-custom-component
+            description: Install additional software for EKS nodes
+            schemaVersion: "1.0"
+            phases:
+              - name: build
+                steps:
+                  - name: InstallDoDCertificates
+                    action: ExecuteBash
+                    inputs:
+                      commands:
+                        - |
+                          echo "=== Downloading and Installing DoD Certificates ==="
+            
+                          DOD_URL="https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/unclass-certificates_pkcs7_DoD.zip"
+                          WCF_URL="https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/unclass-certificates_pkcs7_WCF.zip"
+                          WORK_DIR="/tmp/dod-certs"
+                          TRUST_ANCHORS="/etc/pki/ca-trust/source/anchors"
+            
+                          # Curl options
+                          CURL_OPTS=(
+                              --location
+                              --connect-timeout 30
+                              --max-time 300
+                              --retry 3
+                              --retry-delay 5
+                              --fail
+                              --silent
+                              --show-error
+                          )
+            
+                          # Create working directory
+                          mkdir -p "$WORK_DIR"
+                          cd "$WORK_DIR"
+            
+                          # Function to download and verify
+                          download_cert_bundle() {
+                              local url="$1"
+                              local filename="$2"
+                              
+                              echo "Downloading $filename..."
+                              if curl "${CURL_OPTS[@]}" -o "$filename" "$url"; then
+                                  echo "[SUCCESS] Downloaded $filename"
+                                  # Verify it's actually a zip file
+                                  if ! file "$filename" | grep -q "Zip archive"; then
+                                      echo "[ERROR] $filename is not a valid ZIP file"
+                                      return 1
+                                  fi
+                              else
+                                  echo "[ERROR] Failed to download $filename"
+                                  return 1
+                              fi
+                          }
+            
+                          # Download both certificate bundles
+                          download_cert_bundle "$DOD_URL" "unclass-certificates_pkcs7_DoD.zip" || exit 1
+                          download_cert_bundle "$WCF_URL" "unclass-certificates_pkcs7_WCF.zip" || exit 1
+            
+                          # Function to extract and process certificates
+                          process_cert_bundle() {
+                              local zip_file="$1"
+                              local expected_dir="$2"
+                              local p7b_file="$3"
+                              local output_pem="$4"
+                              
+                              echo "Processing $zip_file..."
+                              
+                              # Extract the zip file
+                              if ! unzip -q "$zip_file"; then
+                                  echo "[ERROR] Failed to extract $zip_file"
+                                  return 1
+                              fi
+                              
+                              # Verify expected directory exists
+                              if [ ! -d "$expected_dir" ]; then
+                                  echo "[ERROR] Expected directory $expected_dir not found after extraction"
+                                  echo "Available directories:"
+                                  ls -la
+                                  return 1
+                              fi
+                              
+                              cd "$expected_dir"
+                              
+                              # Verify P7B file exists
+                              if [ ! -f "$p7b_file" ]; then
+                                  echo "[ERROR] P7B file $p7b_file not found"
+                                  echo "Available files in $expected_dir:"
+                                  ls -la
+                                  cd ..
+                                  return 1
+                              fi
+                              
+                              # Convert PKCS#7 to PEM format
+                              echo "Converting $p7b_file to PEM format..."
+                              if openssl pkcs7 -print_certs -in "$p7b_file" -out "$output_pem"; then
+                                  echo "[SUCCESS] Converted $p7b_file to $output_pem"
+                                  
+                                  # Verify the PEM file contains certificates
+                                  CERT_COUNT=$(grep -c "BEGIN CERTIFICATE" "$output_pem" 2>/dev/null || echo "0")
+                                  if [ "$CERT_COUNT" -gt 0 ]; then
+                                      echo "[INFO] Found $CERT_COUNT certificates in $output_pem"
+                                  else
+                                      echo "[ERROR] No certificates found in converted PEM file"
+                                      cd ..
+                                      return 1
+                                  fi
+                                  
+                                  # Copy to trust anchors with descriptive name
+                                  cp "$output_pem" "$TRUST_ANCHORS/"
+                                  echo "[SUCCESS] Installed $output_pem to trust anchors"
+                              else
+                                  echo "[ERROR] Failed to convert $p7b_file to PEM"
+                                  cd ..
+                                  return 1
+                              fi
+                              
+                              cd ..
+                          }
+            
+                          # Process DoD certificates
+                          process_cert_bundle \
+                              "unclass-certificates_pkcs7_DoD.zip" \
+                              "Certificates_PKCS7_v5_14_DoD" \
+                              "Certificates_PKCS7_v5_14_DoD.pem.p7b" \
+                              "DoD_Root_CAs.pem" || exit 1
+            
+                          # Process WCF certificates  
+                          process_cert_bundle \
+                              "unclass-certificates_pkcs7_WCF.zip" \
+                              "Certificates_PKCS7_v5_17_WCF" \
+                              "Certificates_PKCS7_v5_17_WCF.pem.p7b" \
+                              "WCF_Root_CAs.pem" || exit 1
+            
+                          # Set proper permissions on all PEM files
+                          echo "Setting permissions on certificate files..."
+                          find "$TRUST_ANCHORS" -name "*.pem" -exec chmod 644 {} \;
+            
+                          # Verify we have some certificates installed
+                          INSTALLED_CERTS=$(find "$TRUST_ANCHORS" -name "*.pem" | wc -l)
+                          if [ "$INSTALLED_CERTS" -eq 0 ]; then
+                              echo "[ERROR] No certificate files found in trust anchors directory"
+                              exit 1
+                          fi
+            
+                          echo "[INFO] Total PEM files in trust store: $INSTALLED_CERTS"
+            
+                          # Update the CA trust store
+                          echo "Updating CA trust store..."
+                          if update-ca-trust extract; then
+                              echo "[SUCCESS] CA trust store updated"
+                          else
+                              echo "[ERROR] Failed to update CA trust store"
+                              exit 1
+                          fi
+            
+                          # Verify the trust store was updated
+                          if [ -f "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem" ]; then
+                              BUNDLE_SIZE=$(wc -l < /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem)
+                              echo "[INFO] Updated CA bundle contains $BUNDLE_SIZE lines"
+                          else
+                              echo "[ERROR] CA bundle not found after update"
+                              exit 1
+                          fi
+            
+                          # Cleanup working directory
+                          echo "Cleaning up temporary files..."
+                          cd /tmp
+                          rm -rf "$WORK_DIR"
+            
+                          echo "[SUCCESS] DoD certificates successfully installed from official sources"
+                  - name: PrepareAnsibleHardening
+                    action: ExecuteBash
+                    inputs:
+                      commands:
+                        - |
+                          sudo yum update -y
+                          sudo yum install -y git jq
+                          sudo mkdir -p /ansible/roles/AMAZON-CIS
+                          curl -fsSL https://goss.rocks/install | sh
+                        - |
+                          if [ ! -f /etc/os-release ]; then
+                            echo "The file /etc/os-release does not exist on this system."
+                            exit 1
+                          fi
+                          . /etc/os-release
+                          if [ "$ID" = "amzn" ]; then
+                            if [ "$VERSION_ID" = "2" ]; then
+                              echo "Installing Ansible on Amazon Linux 2..."
+                              sudo yum remove python3 -y
+                              sudo amazon-linux-extras install python3.8 -y
+                              sudo ln -s /usr/bin/python3.8 /usr/bin/python3
+                              sudo python3 -m pip install wheel
+                              sudo python3 -m pip install ansible
+                              sudo python3 -m pip install jmespath
+                              git clone https://github.com/ansible-lockdown/AMAZON2-CIS.git /ansible/roles/AMAZON-CIS
+                            elif [ "$VERSION_ID" = "2023" ]; then
+                              echo "Installing Ansible on Amazon Linux 2023..."
+                              sudo yum install ansible -y
+                              git clone https://github.com/ansible-lockdown/AMAZON2023-CIS.git /ansible/roles/AMAZON-CIS
+                            else
+                              echo "Unknown Amazon Linux version: $VERSION_ID"
+                              exit 1
+                            fi
+                          else
+                            echo "This OS is not Amazon Linux."
+                            exit 1
+                          fi
+                        - |
+                          cat > /ansible/eks-cis.yml <<EOL
+                          - name: CIS AL2 Benchmark
+                            hosts: 127.0.0.1
+                            connection: local
+                            roles:
+                              - AMAZON-CIS
+                          EOL
+                  - name: InvokeAnsible
+                    action: ExecuteBash
+                    inputs:
+                      commands:
+                        - ansible-playbook /ansible/eks-cis.yml --extra-vars '{"amzn2023cis_syslog_service":"external","amzn2023cis_selinux_disable":true}' --skip-tags rule_1.1.2.3,rule_1.1.4.3,rule_1.2.1,rule_1.3.1,rule_1.3.3,firewalld,accounts,logrotate,rule_6.2.10
+                  - name: DeletePlaybook
+                    action: ExecuteBash
+                    inputs:
+                      commands:
+                        - sudo rm -rf '/ansible'
+                  - name: restartCloud-init
+                    action: ExecuteBash
+                    inputs:
+                      commands:
+                        - sudo cloud-init clean
+        EOT
+      [32m+[0m[0m date_created = (known after apply)
+      [32m+[0m[0m description  = "Component for EKS custom AMI with additional software"
+      [32m+[0m[0m encrypted    = (known after apply)
+      [32m+[0m[0m id           = (known after apply)
+      [32m+[0m[0m name         = "d_eks_custom_component"
+      [32m+[0m[0m owner        = (known after apply)
+      [32m+[0m[0m platform     = "Linux"
+      [32m+[0m[0m region       = "us-east-1"
+      [32m+[0m[0m skip_destroy = false
+      [32m+[0m[0m tags         = {
+          [32m+[0m[0m "Name" = "d_eks_custom_component"
+        }
+      [32m+[0m[0m tags_all     = {
+          [32m+[0m[0m "Name" = "d_eks_custom_component"
+        }
+      [32m+[0m[0m type         = (known after apply)
+      [32m+[0m[0m version      = "1.0.0"
+    }
+
+[1m  # aws_imagebuilder_distribution_configuration.eks_custom_distribution[0m will be created
+[0m  [32m+[0m[0m resource "aws_imagebuilder_distribution_configuration" "eks_custom_distribution" {
+      [32m+[0m[0m arn          = (known after apply)
+      [32m+[0m[0m date_created = (known after apply)
+      [32m+[0m[0m date_updated = (known after apply)
+      [32m+[0m[0m id           = (known after apply)
+      [32m+[0m[0m name         = "d_eks_custom_distribution"
+      [32m+[0m[0m region       = "us-east-1"
+      [32m+[0m[0m tags         = {
+          [32m+[0m[0m "Name" = "d_eks_custom_distribution"
+        }
+      [32m+[0m[0m tags_all     = {
+          [32m+[0m[0m "Name" = "d_eks_custom_distribution"
+        }
+
+      [32m+[0m[0m distribution {
+          [32m+[0m[0m license_configuration_arns = []
+          [32m+[0m[0m region                     = "us-east-1"
+
+          [32m+[0m[0m ami_distribution_configuration {
+              [32m+[0m[0m ami_tags           = {
+                  [32m+[0m[0m "BaseImage" = "Amazon-Linux-2023"
+                  [32m+[0m[0m "Name"      = "d_eks_custom_ami"
+                  [32m+[0m[0m "Type"      = "EKS-Custom"
+                }
+              [32m+[0m[0m description        = "Custom EKS AMI built on {{ imagebuilder:buildDate }}"
+              [32m+[0m[0m name               = "d_eks_custom_ami-{{ imagebuilder:buildDate }}"
+              [32m+[0m[0m target_account_ids = [
+                  [32m+[0m[0m "290226690004",
+                ]
+                [90m# (1 unchanged attribute hidden)[0m[0m
+            }
+        }
+    }
+
+[1m  # aws_imagebuilder_image_pipeline.eks_custom_pipeline[0m will be created
+[0m  [32m+[0m[0m resource "aws_imagebuilder_image_pipeline" "eks_custom_pipeline" {
+      [32m+[0m[0m arn                              = (known after apply)
+      [32m+[0m[0m date_created                     = (known after apply)
+      [32m+[0m[0m date_last_run                    = (known after apply)
+      [32m+[0m[0m date_next_run                    = (known after apply)
+      [32m+[0m[0m date_updated                     = (known after apply)
+      [32m+[0m[0m description                      = "Pipeline for building EKS custom AMI"
+      [32m+[0m[0m distribution_configuration_arn   = (known after apply)
+      [32m+[0m[0m enhanced_image_metadata_enabled  = true
+      [32m+[0m[0m id                               = (known after apply)
+      [32m+[0m[0m image_recipe_arn                 = (known after apply)
+      [32m+[0m[0m infrastructure_configuration_arn = (known after apply)
+      [32m+[0m[0m name                             = "d_eks_custom_pipeline"
+      [32m+[0m[0m platform                         = (known after apply)
+      [32m+[0m[0m region                           = "us-east-1"
+      [32m+[0m[0m status                           = "ENABLED"
+      [32m+[0m[0m tags                             = {
+          [32m+[0m[0m "Name" = "d_eks_custom_pipeline"
+        }
+      [32m+[0m[0m tags_all                         = {
+          [32m+[0m[0m "Name" = "d_eks_custom_pipeline"
+        }
+
+      [32m+[0m[0m image_scanning_configuration (known after apply)
+
+      [32m+[0m[0m image_tests_configuration {
+          [32m+[0m[0m image_tests_enabled = true
+          [32m+[0m[0m timeout_minutes     = 720
+        }
+
+      [32m+[0m[0m schedule {
+          [32m+[0m[0m pipeline_execution_start_condition = "EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE"
+          [32m+[0m[0m schedule_expression                = "cron(0 8 1-7 ? 7 *)"
+          [32m+[0m[0m timezone                           = (known after apply)
+        }
+
+      [32m+[0m[0m workflow (known after apply)
+    }
+
+[1m  # aws_imagebuilder_image_recipe.eks_custom_recipe[0m will be created
+[0m  [32m+[0m[0m resource "aws_imagebuilder_image_recipe" "eks_custom_recipe" {
+      [32m+[0m[0m arn              = (known after apply)
+      [32m+[0m[0m date_created     = (known after apply)
+      [32m+[0m[0m description      = "Recipe for EKS custom AMI based on Amazon Linux 2023"
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m name             = "d_eks_custom_recipe"
+      [32m+[0m[0m owner            = (known after apply)
+      [32m+[0m[0m parent_image     = "ami-0fa03f713b55841a2"
+      [32m+[0m[0m platform         = (known after apply)
+      [32m+[0m[0m region           = "us-east-1"
+      [32m+[0m[0m tags             = {
+          [32m+[0m[0m "Name" = "d_eks_custom_recipe"
+        }
+      [32m+[0m[0m tags_all         = {
+          [32m+[0m[0m "Name" = "d_eks_custom_recipe"
+        }
+      [32m+[0m[0m user_data_base64 = (known after apply)
+      [32m+[0m[0m version          = "1.0.0"
+
+      [32m+[0m[0m block_device_mapping {
+          [32m+[0m[0m device_name  = "/dev/xvda"
+          [32m+[0m[0m no_device    = (known after apply)
+            [90m# (1 unchanged attribute hidden)[0m[0m
+
+          [32m+[0m[0m ebs {
+              [32m+[0m[0m delete_on_termination = "true"
+              [32m+[0m[0m volume_size           = 80
+              [32m+[0m[0m volume_type           = "gp3"
+                [90m# (3 unchanged attributes hidden)[0m[0m
+            }
+        }
+      [32m+[0m[0m block_device_mapping {
+          [32m+[0m[0m device_name  = "/dev/xvdf"
+          [32m+[0m[0m no_device    = (known after apply)
+            [90m# (1 unchanged attribute hidden)[0m[0m
+
+          [32m+[0m[0m ebs {
+              [32m+[0m[0m delete_on_termination = "true"
+              [32m+[0m[0m volume_size           = 20
+              [32m+[0m[0m volume_type           = "gp3"
+                [90m# (3 unchanged attributes hidden)[0m[0m
+            }
+        }
+      [32m+[0m[0m block_device_mapping {
+          [32m+[0m[0m device_name  = "/dev/xvdg"
+          [32m+[0m[0m no_device    = (known after apply)
+            [90m# (1 unchanged attribute hidden)[0m[0m
+
+          [32m+[0m[0m ebs {
+              [32m+[0m[0m delete_on_termination = "true"
+              [32m+[0m[0m volume_size           = 20
+              [32m+[0m[0m volume_type           = "gp3"
+                [90m# (3 unchanged attributes hidden)[0m[0m
+            }
+        }
+      [32m+[0m[0m block_device_mapping {
+          [32m+[0m[0m device_name  = "/dev/xvdh"
+          [32m+[0m[0m no_device    = (known after apply)
+            [90m# (1 unchanged attribute hidden)[0m[0m
+
+          [32m+[0m[0m ebs {
+              [32m+[0m[0m delete_on_termination = "true"
+              [32m+[0m[0m volume_size           = 20
+              [32m+[0m[0m volume_type           = "gp3"
+                [90m# (3 unchanged attributes hidden)[0m[0m
+            }
+        }
+      [32m+[0m[0m block_device_mapping {
+          [32m+[0m[0m device_name  = "/dev/xvdi"
+          [32m+[0m[0m no_device    = (known after apply)
+            [90m# (1 unchanged attribute hidden)[0m[0m
+
+          [32m+[0m[0m ebs {
+              [32m+[0m[0m delete_on_termination = "true"
+              [32m+[0m[0m volume_size           = 20
+              [32m+[0m[0m volume_type           = "gp3"
+                [90m# (3 unchanged attributes hidden)[0m[0m
+            }
+        }
+
+      [32m+[0m[0m component {
+          [32m+[0m[0m component_arn = (known after apply)
+        }
+
+      [32m+[0m[0m systems_manager_agent (known after apply)
+    }
+
+[1m  # aws_imagebuilder_infrastructure_configuration.eks_custom_ami[0m will be created
+[0m  [32m+[0m[0m resource "aws_imagebuilder_infrastructure_configuration" "eks_custom_ami" {
+      [32m+[0m[0m arn                           = (known after apply)
+      [32m+[0m[0m date_created                  = (known after apply)
+      [32m+[0m[0m date_updated                  = (known after apply)
+      [32m+[0m[0m description                   = "Infrastructure configuration for EKS custom AMI"
+      [32m+[0m[0m id                            = (known after apply)
+      [32m+[0m[0m instance_profile_name         = "d_image_builder_instance_profile"
+      [32m+[0m[0m instance_types                = [
+          [32m+[0m[0m "t3.medium",
+        ]
+      [32m+[0m[0m name                          = "d_eks_custom_ami_infra"
+      [32m+[0m[0m region                        = "us-east-1"
+      [32m+[0m[0m security_group_ids            = (known after apply)
+      [32m+[0m[0m subnet_id                     = (known after apply)
+      [32m+[0m[0m tags                          = {
+          [32m+[0m[0m "Name" = "d_eks_custom_ami_infra"
+        }
+      [32m+[0m[0m tags_all                      = {
+          [32m+[0m[0m "Name" = "d_eks_custom_ami_infra"
+        }
+      [32m+[0m[0m terminate_instance_on_failure = true
+    }
+
+[1m  # aws_instance.eks_bastion[0m will be created
+[0m  [32m+[0m[0m resource "aws_instance" "eks_bastion" {
+      [32m+[0m[0m ami                                  = "ami-05ec3f7f324a54c7f"
+      [32m+[0m[0m arn                                  = (known after apply)
+      [32m+[0m[0m associate_public_ip_address          = true
+      [32m+[0m[0m availability_zone                    = (known after apply)
+      [32m+[0m[0m disable_api_stop                     = (known after apply)
+      [32m+[0m[0m disable_api_termination              = (known after apply)
+      [32m+[0m[0m ebs_optimized                        = (known after apply)
+      [32m+[0m[0m enable_primary_ipv6                  = (known after apply)
+      [32m+[0m[0m force_destroy                        = false
+      [32m+[0m[0m get_password_data                    = false
+      [32m+[0m[0m host_id                              = (known after apply)
+      [32m+[0m[0m host_resource_group_arn              = (known after apply)
+      [32m+[0m[0m iam_instance_profile                 = (known after apply)
+      [32m+[0m[0m id                                   = (known after apply)
+      [32m+[0m[0m instance_initiated_shutdown_behavior = (known after apply)
+      [32m+[0m[0m instance_lifecycle                   = (known after apply)
+      [32m+[0m[0m instance_state                       = (known after apply)
+      [32m+[0m[0m instance_type                        = "t3.micro"
+      [32m+[0m[0m ipv6_address_count                   = (known after apply)
+      [32m+[0m[0m ipv6_addresses                       = (known after apply)
+      [32m+[0m[0m key_name                             = "bastion"
+      [32m+[0m[0m monitoring                           = (known after apply)
+      [32m+[0m[0m outpost_arn                          = (known after apply)
+      [32m+[0m[0m password_data                        = (known after apply)
+      [32m+[0m[0m placement_group                      = (known after apply)
+      [32m+[0m[0m placement_partition_number           = (known after apply)
+      [32m+[0m[0m primary_network_interface_id         = (known after apply)
+      [32m+[0m[0m private_dns                          = (known after apply)
+      [32m+[0m[0m private_ip                           = (known after apply)
+      [32m+[0m[0m public_dns                           = (known after apply)
+      [32m+[0m[0m public_ip                            = (known after apply)
+      [32m+[0m[0m region                               = "us-east-1"
+      [32m+[0m[0m secondary_private_ips                = (known after apply)
+      [32m+[0m[0m security_groups                      = (known after apply)
+      [32m+[0m[0m source_dest_check                    = true
+      [32m+[0m[0m spot_instance_request_id             = (known after apply)
+      [32m+[0m[0m subnet_id                            = (known after apply)
+      [32m+[0m[0m tags                                 = {
+          [32m+[0m[0m "Name" = "d-eks-bastion"
+        }
+      [32m+[0m[0m tags_all                             = {
+          [32m+[0m[0m "Name" = "d-eks-bastion"
+        }
+      [32m+[0m[0m tenancy                              = (known after apply)
+      [32m+[0m[0m user_data_base64                     = (known after apply)
+      [32m+[0m[0m user_data_replace_on_change          = false
+      [32m+[0m[0m vpc_security_group_ids               = (known after apply)
+
+      [32m+[0m[0m capacity_reservation_specification (known after apply)
+
+      [32m+[0m[0m cpu_options (known after apply)
+
+      [32m+[0m[0m ebs_block_device (known after apply)
+
+      [32m+[0m[0m enclave_options (known after apply)
+
+      [32m+[0m[0m ephemeral_block_device (known after apply)
+
+      [32m+[0m[0m instance_market_options (known after apply)
+
+      [32m+[0m[0m maintenance_options (known after apply)
+
+      [32m+[0m[0m metadata_options (known after apply)
+
+      [32m+[0m[0m network_interface (known after apply)
+
+      [32m+[0m[0m private_dns_name_options (known after apply)
+
+      [32m+[0m[0m root_block_device (known after apply)
+    }
+
+[1m  # aws_internet_gateway.eks_igw[0m will be created
+[0m  [32m+[0m[0m resource "aws_internet_gateway" "eks_igw" {
+      [32m+[0m[0m arn      = (known after apply)
+      [32m+[0m[0m id       = (known after apply)
+      [32m+[0m[0m owner_id = (known after apply)
+      [32m+[0m[0m region   = "us-east-1"
+      [32m+[0m[0m tags     = {
+          [32m+[0m[0m "Name" = "d-eks-igw"
+        }
+      [32m+[0m[0m tags_all = {
+          [32m+[0m[0m "Name" = "d-eks-igw"
+        }
+      [32m+[0m[0m vpc_id   = (known after apply)
+    }
+
+[1m  # aws_launch_template.eks_node_launch_template[0m will be created
+[0m  [32m+[0m[0m resource "aws_launch_template" "eks_node_launch_template" {
+      [32m+[0m[0m arn             = (known after apply)
+      [32m+[0m[0m default_version = (known after apply)
+      [32m+[0m[0m id              = (known after apply)
+      [32m+[0m[0m image_id        = (known after apply)
+      [32m+[0m[0m instance_type   = "t3.medium"
+      [32m+[0m[0m latest_version  = (known after apply)
+      [32m+[0m[0m name            = (known after apply)
+      [32m+[0m[0m name_prefix     = "d_eks_node_launch_template"
+      [32m+[0m[0m region          = "us-east-1"
+      [32m+[0m[0m tags_all        = (known after apply)
+      [32m+[0m[0m user_data       = (known after apply)
+
+      [32m+[0m[0m metadata_options (known after apply)
+
+      [32m+[0m[0m tag_specifications {
+          [32m+[0m[0m resource_type = "instance"
+          [32m+[0m[0m tags          = {
+              [32m+[0m[0m "Name" = "d_eks_node"
+            }
+        }
+    }
+
+[1m  # aws_nat_gateway.eks_nat_gateway_z1[0m will be created
+[0m  [32m+[0m[0m resource "aws_nat_gateway" "eks_nat_gateway_z1" {
+      [32m+[0m[0m allocation_id                      = (known after apply)
+      [32m+[0m[0m association_id                     = (known after apply)
+      [32m+[0m[0m connectivity_type                  = "public"
+      [32m+[0m[0m id                                 = (known after apply)
+      [32m+[0m[0m network_interface_id               = (known after apply)
+      [32m+[0m[0m private_ip                         = "10.0.3.254"
+      [32m+[0m[0m public_ip                          = (known after apply)
+      [32m+[0m[0m region                             = "us-east-1"
+      [32m+[0m[0m secondary_allocation_ids           = (known after apply)
+      [32m+[0m[0m secondary_private_ip_address_count = (known after apply)
+      [32m+[0m[0m secondary_private_ip_addresses     = (known after apply)
+      [32m+[0m[0m subnet_id                          = (known after apply)
+      [32m+[0m[0m tags                               = {
+          [32m+[0m[0m "Name" = "d-eks-nat-gateway-z1"
+        }
+      [32m+[0m[0m tags_all                           = {
+          [32m+[0m[0m "Name" = "d-eks-nat-gateway-z1"
+        }
+    }
+
+[1m  # aws_nat_gateway.eks_nat_gateway_z2[0m will be created
+[0m  [32m+[0m[0m resource "aws_nat_gateway" "eks_nat_gateway_z2" {
+      [32m+[0m[0m allocation_id                      = (known after apply)
+      [32m+[0m[0m association_id                     = (known after apply)
+      [32m+[0m[0m connectivity_type                  = "public"
+      [32m+[0m[0m id                                 = (known after apply)
+      [32m+[0m[0m network_interface_id               = (known after apply)
+      [32m+[0m[0m private_ip                         = "10.0.4.254"
+      [32m+[0m[0m public_ip                          = (known after apply)
+      [32m+[0m[0m region                             = "us-east-1"
+      [32m+[0m[0m secondary_allocation_ids           = (known after apply)
+      [32m+[0m[0m secondary_private_ip_address_count = (known after apply)
+      [32m+[0m[0m secondary_private_ip_addresses     = (known after apply)
+      [32m+[0m[0m subnet_id                          = (known after apply)
+      [32m+[0m[0m tags                               = {
+          [32m+[0m[0m "Name" = "d-eks-nat-gateway-z2"
+        }
+      [32m+[0m[0m tags_all                           = {
+          [32m+[0m[0m "Name" = "d-eks-nat-gateway-z2"
+        }
+    }
+
+[1m  # aws_nat_gateway.eks_nat_gateway_z3[0m will be created
+[0m  [32m+[0m[0m resource "aws_nat_gateway" "eks_nat_gateway_z3" {
+      [32m+[0m[0m allocation_id                      = (known after apply)
+      [32m+[0m[0m association_id                     = (known after apply)
+      [32m+[0m[0m connectivity_type                  = "public"
+      [32m+[0m[0m id                                 = (known after apply)
+      [32m+[0m[0m network_interface_id               = (known after apply)
+      [32m+[0m[0m private_ip                         = "10.0.5.254"
+      [32m+[0m[0m public_ip                          = (known after apply)
+      [32m+[0m[0m region                             = "us-east-1"
+      [32m+[0m[0m secondary_allocation_ids           = (known after apply)
+      [32m+[0m[0m secondary_private_ip_address_count = (known after apply)
+      [32m+[0m[0m secondary_private_ip_addresses     = (known after apply)
+      [32m+[0m[0m subnet_id                          = (known after apply)
+      [32m+[0m[0m tags                               = {
+          [32m+[0m[0m "Name" = "d-eks-nat-gateway-z3"
+        }
+      [32m+[0m[0m tags_all                           = {
+          [32m+[0m[0m "Name" = "d-eks-nat-gateway-z3"
+        }
+    }
+
+[1m  # aws_route.private_r1[0m will be created
+[0m  [32m+[0m[0m resource "aws_route" "private_r1" {
+      [32m+[0m[0m destination_cidr_block = "0.0.0.0/0"
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m instance_id            = (known after apply)
+      [32m+[0m[0m instance_owner_id      = (known after apply)
+      [32m+[0m[0m nat_gateway_id         = (known after apply)
+      [32m+[0m[0m network_interface_id   = (known after apply)
+      [32m+[0m[0m origin                 = (known after apply)
+      [32m+[0m[0m region                 = "us-east-1"
+      [32m+[0m[0m route_table_id         = (known after apply)
+      [32m+[0m[0m state                  = (known after apply)
+    }
+
+[1m  # aws_route.private_r2[0m will be created
+[0m  [32m+[0m[0m resource "aws_route" "private_r2" {
+      [32m+[0m[0m destination_cidr_block = "0.0.0.0/0"
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m instance_id            = (known after apply)
+      [32m+[0m[0m instance_owner_id      = (known after apply)
+      [32m+[0m[0m nat_gateway_id         = (known after apply)
+      [32m+[0m[0m network_interface_id   = (known after apply)
+      [32m+[0m[0m origin                 = (known after apply)
+      [32m+[0m[0m region                 = "us-east-1"
+      [32m+[0m[0m route_table_id         = (known after apply)
+      [32m+[0m[0m state                  = (known after apply)
+    }
+
+[1m  # aws_route.private_r3[0m will be created
+[0m  [32m+[0m[0m resource "aws_route" "private_r3" {
+      [32m+[0m[0m destination_cidr_block = "0.0.0.0/0"
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m instance_id            = (known after apply)
+      [32m+[0m[0m instance_owner_id      = (known after apply)
+      [32m+[0m[0m nat_gateway_id         = (known after apply)
+      [32m+[0m[0m network_interface_id   = (known after apply)
+      [32m+[0m[0m origin                 = (known after apply)
+      [32m+[0m[0m region                 = "us-east-1"
+      [32m+[0m[0m route_table_id         = (known after apply)
+      [32m+[0m[0m state                  = (known after apply)
+    }
+
+[1m  # aws_route.public_r1[0m will be created
+[0m  [32m+[0m[0m resource "aws_route" "public_r1" {
+      [32m+[0m[0m destination_cidr_block = "0.0.0.0/0"
+      [32m+[0m[0m gateway_id             = (known after apply)
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m instance_id            = (known after apply)
+      [32m+[0m[0m instance_owner_id      = (known after apply)
+      [32m+[0m[0m network_interface_id   = (known after apply)
+      [32m+[0m[0m origin                 = (known after apply)
+      [32m+[0m[0m region                 = "us-east-1"
+      [32m+[0m[0m route_table_id         = (known after apply)
+      [32m+[0m[0m state                  = (known after apply)
+    }
+
+[1m  # aws_route.public_r2[0m will be created
+[0m  [32m+[0m[0m resource "aws_route" "public_r2" {
+      [32m+[0m[0m destination_cidr_block = "0.0.0.0/0"
+      [32m+[0m[0m gateway_id             = (known after apply)
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m instance_id            = (known after apply)
+      [32m+[0m[0m instance_owner_id      = (known after apply)
+      [32m+[0m[0m network_interface_id   = (known after apply)
+      [32m+[0m[0m origin                 = (known after apply)
+      [32m+[0m[0m region                 = "us-east-1"
+      [32m+[0m[0m route_table_id         = (known after apply)
+      [32m+[0m[0m state                  = (known after apply)
+    }
+
+[1m  # aws_route.public_r3[0m will be created
+[0m  [32m+[0m[0m resource "aws_route" "public_r3" {
+      [32m+[0m[0m destination_cidr_block = "0.0.0.0/0"
+      [32m+[0m[0m gateway_id             = (known after apply)
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m instance_id            = (known after apply)
+      [32m+[0m[0m instance_owner_id      = (known after apply)
+      [32m+[0m[0m network_interface_id   = (known after apply)
+      [32m+[0m[0m origin                 = (known after apply)
+      [32m+[0m[0m region                 = "us-east-1"
+      [32m+[0m[0m route_table_id         = (known after apply)
+      [32m+[0m[0m state                  = (known after apply)
+    }
+
+[1m  # aws_route_table.eks_private_rt_z1[0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table" "eks_private_rt_z1" {
+      [32m+[0m[0m arn              = (known after apply)
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m owner_id         = (known after apply)
+      [32m+[0m[0m propagating_vgws = (known after apply)
+      [32m+[0m[0m region           = "us-east-1"
+      [32m+[0m[0m route            = (known after apply)
+      [32m+[0m[0m tags             = {
+          [32m+[0m[0m "Name" = "d-eks-private-rt-z1"
+        }
+      [32m+[0m[0m tags_all         = {
+          [32m+[0m[0m "Name" = "d-eks-private-rt-z1"
+        }
+      [32m+[0m[0m vpc_id           = (known after apply)
+    }
+
+[1m  # aws_route_table.eks_private_rt_z2[0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table" "eks_private_rt_z2" {
+      [32m+[0m[0m arn              = (known after apply)
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m owner_id         = (known after apply)
+      [32m+[0m[0m propagating_vgws = (known after apply)
+      [32m+[0m[0m region           = "us-east-1"
+      [32m+[0m[0m route            = (known after apply)
+      [32m+[0m[0m tags             = {
+          [32m+[0m[0m "Name" = "d-eks-private-rt-z2"
+        }
+      [32m+[0m[0m tags_all         = {
+          [32m+[0m[0m "Name" = "d-eks-private-rt-z2"
+        }
+      [32m+[0m[0m vpc_id           = (known after apply)
+    }
+
+[1m  # aws_route_table.eks_private_rt_z3[0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table" "eks_private_rt_z3" {
+      [32m+[0m[0m arn              = (known after apply)
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m owner_id         = (known after apply)
+      [32m+[0m[0m propagating_vgws = (known after apply)
+      [32m+[0m[0m region           = "us-east-1"
+      [32m+[0m[0m route            = (known after apply)
+      [32m+[0m[0m tags             = {
+          [32m+[0m[0m "Name" = "d-eks-private-rt-z3"
+        }
+      [32m+[0m[0m tags_all         = {
+          [32m+[0m[0m "Name" = "d-eks-private-rt-z3"
+        }
+      [32m+[0m[0m vpc_id           = (known after apply)
+    }
+
+[1m  # aws_route_table.eks_public_rt_z1[0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table" "eks_public_rt_z1" {
+      [32m+[0m[0m arn              = (known after apply)
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m owner_id         = (known after apply)
+      [32m+[0m[0m propagating_vgws = (known after apply)
+      [32m+[0m[0m region           = "us-east-1"
+      [32m+[0m[0m route            = (known after apply)
+      [32m+[0m[0m tags             = {
+          [32m+[0m[0m "Name" = "d-eks-public-rt-z1"
+        }
+      [32m+[0m[0m tags_all         = {
+          [32m+[0m[0m "Name" = "d-eks-public-rt-z1"
+        }
+      [32m+[0m[0m vpc_id           = (known after apply)
+    }
+
+[1m  # aws_route_table.eks_public_rt_z2[0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table" "eks_public_rt_z2" {
+      [32m+[0m[0m arn              = (known after apply)
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m owner_id         = (known after apply)
+      [32m+[0m[0m propagating_vgws = (known after apply)
+      [32m+[0m[0m region           = "us-east-1"
+      [32m+[0m[0m route            = (known after apply)
+      [32m+[0m[0m tags             = {
+          [32m+[0m[0m "Name" = "d-eks-public-rt-z2"
+        }
+      [32m+[0m[0m tags_all         = {
+          [32m+[0m[0m "Name" = "d-eks-public-rt-z2"
+        }
+      [32m+[0m[0m vpc_id           = (known after apply)
+    }
+
+[1m  # aws_route_table.eks_public_rt_z3[0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table" "eks_public_rt_z3" {
+      [32m+[0m[0m arn              = (known after apply)
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m owner_id         = (known after apply)
+      [32m+[0m[0m propagating_vgws = (known after apply)
+      [32m+[0m[0m region           = "us-east-1"
+      [32m+[0m[0m route            = (known after apply)
+      [32m+[0m[0m tags             = {
+          [32m+[0m[0m "Name" = "d-eks-public-rt-z3"
+        }
+      [32m+[0m[0m tags_all         = {
+          [32m+[0m[0m "Name" = "d-eks-public-rt-z3"
+        }
+      [32m+[0m[0m vpc_id           = (known after apply)
+    }
+
+[1m  # aws_route_table_association.eks_private_subnet_association_z1[0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table_association" "eks_private_subnet_association_z1" {
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m region         = "us-east-1"
+      [32m+[0m[0m route_table_id = (known after apply)
+      [32m+[0m[0m subnet_id      = (known after apply)
+    }
+
+[1m  # aws_route_table_association.eks_private_subnet_association_z2[0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table_association" "eks_private_subnet_association_z2" {
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m region         = "us-east-1"
+      [32m+[0m[0m route_table_id = (known after apply)
+      [32m+[0m[0m subnet_id      = (known after apply)
+    }
+
+[1m  # aws_route_table_association.eks_private_subnet_association_z3[0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table_association" "eks_private_subnet_association_z3" {
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m region         = "us-east-1"
+      [32m+[0m[0m route_table_id = (known after apply)
+      [32m+[0m[0m subnet_id      = (known after apply)
+    }
+
+[1m  # aws_route_table_association.eks_public_subnet_association_z1[0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table_association" "eks_public_subnet_association_z1" {
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m region         = "us-east-1"
+      [32m+[0m[0m route_table_id = (known after apply)
+      [32m+[0m[0m subnet_id      = (known after apply)
+    }
+
+[1m  # aws_route_table_association.eks_public_subnet_association_z2[0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table_association" "eks_public_subnet_association_z2" {
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m region         = "us-east-1"
+      [32m+[0m[0m route_table_id = (known after apply)
+      [32m+[0m[0m subnet_id      = (known after apply)
+    }
+
+[1m  # aws_route_table_association.eks_public_subnet_association_z3[0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table_association" "eks_public_subnet_association_z3" {
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m region         = "us-east-1"
+      [32m+[0m[0m route_table_id = (known after apply)
+      [32m+[0m[0m subnet_id      = (known after apply)
+    }
+
+[1m  # aws_security_group.eks_cluster_sg[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group" "eks_cluster_sg" {
+      [32m+[0m[0m arn                    = (known after apply)
+      [32m+[0m[0m description            = "Managed by Terraform"
+      [32m+[0m[0m egress                 = (known after apply)
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m ingress                = (known after apply)
+      [32m+[0m[0m name                   = (known after apply)
+      [32m+[0m[0m name_prefix            = (known after apply)
+      [32m+[0m[0m owner_id               = (known after apply)
+      [32m+[0m[0m region                 = "us-east-1"
+      [32m+[0m[0m revoke_rules_on_delete = false
+      [32m+[0m[0m tags                   = {
+          [32m+[0m[0m "Name" = "d-eks-cluster-sg"
+        }
+      [32m+[0m[0m tags_all               = {
+          [32m+[0m[0m "Name" = "d-eks-cluster-sg"
+        }
+      [32m+[0m[0m vpc_id                 = (known after apply)
+    }
+
+[1m  # aws_security_group.endpoints_sg[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group" "endpoints_sg" {
+      [32m+[0m[0m arn                    = (known after apply)
+      [32m+[0m[0m description            = "Managed by Terraform"
+      [32m+[0m[0m egress                 = (known after apply)
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m ingress                = (known after apply)
+      [32m+[0m[0m name                   = (known after apply)
+      [32m+[0m[0m name_prefix            = (known after apply)
+      [32m+[0m[0m owner_id               = (known after apply)
+      [32m+[0m[0m region                 = "us-east-1"
+      [32m+[0m[0m revoke_rules_on_delete = false
+      [32m+[0m[0m tags                   = {
+          [32m+[0m[0m "Name" = "d-endpoints-sg"
+        }
+      [32m+[0m[0m tags_all               = {
+          [32m+[0m[0m "Name" = "d-endpoints-sg"
+        }
+      [32m+[0m[0m vpc_id                 = (known after apply)
+    }
+
+[1m  # aws_security_group.image_builder_sg[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group" "image_builder_sg" {
+      [32m+[0m[0m arn                    = (known after apply)
+      [32m+[0m[0m description            = "Security group for Image Builder instances"
+      [32m+[0m[0m egress                 = [
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m from_port        = 0
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "-1"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 0
+                [90m# (1 unchanged attribute hidden)[0m[0m
+            },
+        ]
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m ingress                = (known after apply)
+      [32m+[0m[0m name                   = (known after apply)
+      [32m+[0m[0m name_prefix            = "d_image_builder_sg"
+      [32m+[0m[0m owner_id               = (known after apply)
+      [32m+[0m[0m region                 = "us-east-1"
+      [32m+[0m[0m revoke_rules_on_delete = false
+      [32m+[0m[0m tags                   = {
+          [32m+[0m[0m "Name" = "d_image_builder_sg"
+        }
+      [32m+[0m[0m tags_all               = {
+          [32m+[0m[0m "Name" = "d_image_builder_sg"
+        }
+      [32m+[0m[0m vpc_id                 = (known after apply)
+    }
+
+[1m  # aws_subnet.eks_private_subnet_zone1[0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "eks_private_subnet_zone1" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "us-east-1a"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.0.0.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = false
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m region                                         = "us-east-1"
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name"                            = "d-eks-private-subnet-zone1"
+          [32m+[0m[0m "kubernetes.io/role/internal-elb" = "1"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name"                            = "d-eks-private-subnet-zone1"
+          [32m+[0m[0m "kubernetes.io/role/internal-elb" = "1"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_subnet.eks_private_subnet_zone2[0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "eks_private_subnet_zone2" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "us-east-1b"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.0.1.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = false
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m region                                         = "us-east-1"
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name"                            = "d-eks-private-subnet-zone2"
+          [32m+[0m[0m "kubernetes.io/role/internal-elb" = "1"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name"                            = "d-eks-private-subnet-zone2"
+          [32m+[0m[0m "kubernetes.io/role/internal-elb" = "1"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_subnet.eks_private_subnet_zone3[0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "eks_private_subnet_zone3" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "us-east-1c"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.0.2.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = false
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m region                                         = "us-east-1"
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name"                            = "d-eks-private-subnet-zone3"
+          [32m+[0m[0m "kubernetes.io/role/internal-elb" = "1"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name"                            = "d-eks-private-subnet-zone3"
+          [32m+[0m[0m "kubernetes.io/role/internal-elb" = "1"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_subnet.eks_public_subnet_zone1[0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "eks_public_subnet_zone1" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "us-east-1a"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.0.3.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = false
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m region                                         = "us-east-1"
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name"                   = "d-eks-public-subnet-zone1"
+          [32m+[0m[0m "kubernetes.io/role/elb" = "1"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name"                   = "d-eks-public-subnet-zone1"
+          [32m+[0m[0m "kubernetes.io/role/elb" = "1"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_subnet.eks_public_subnet_zone2[0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "eks_public_subnet_zone2" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "us-east-1b"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.0.4.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = false
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m region                                         = "us-east-1"
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name"                   = "d-eks-public-subnet-zone2"
+          [32m+[0m[0m "kubernetes.io/role/elb" = "1"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name"                   = "d-eks-public-subnet-zone2"
+          [32m+[0m[0m "kubernetes.io/role/elb" = "1"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_subnet.eks_public_subnet_zone3[0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "eks_public_subnet_zone3" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "us-east-1c"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.0.5.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = false
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m region                                         = "us-east-1"
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name"                   = "d-eks-public-subnet-zone3"
+          [32m+[0m[0m "kubernetes.io/role/elb" = "1"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name"                   = "d-eks-public-subnet-zone3"
+          [32m+[0m[0m "kubernetes.io/role/elb" = "1"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_vpc.eks_vpc[0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc" "eks_vpc" {
+      [32m+[0m[0m arn                                  = (known after apply)
+      [32m+[0m[0m cidr_block                           = "10.0.0.0/16"
+      [32m+[0m[0m default_network_acl_id               = (known after apply)
+      [32m+[0m[0m default_route_table_id               = (known after apply)
+      [32m+[0m[0m default_security_group_id            = (known after apply)
+      [32m+[0m[0m dhcp_options_id                      = (known after apply)
+      [32m+[0m[0m enable_dns_hostnames                 = true
+      [32m+[0m[0m enable_dns_support                   = true
+      [32m+[0m[0m enable_network_address_usage_metrics = (known after apply)
+      [32m+[0m[0m id                                   = (known after apply)
+      [32m+[0m[0m instance_tenancy                     = "default"
+      [32m+[0m[0m ipv6_association_id                  = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block                      = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_network_border_group = (known after apply)
+      [32m+[0m[0m main_route_table_id                  = (known after apply)
+      [32m+[0m[0m owner_id                             = (known after apply)
+      [32m+[0m[0m region                               = "us-east-1"
+      [32m+[0m[0m tags                                 = {
+          [32m+[0m[0m "Name" = "d-eks-vpc"
+        }
+      [32m+[0m[0m tags_all                             = {
+          [32m+[0m[0m "Name" = "d-eks-vpc"
+        }
+    }
+
+[1m  # aws_vpc_endpoint.endpoints["ec2"][0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc_endpoint" "endpoints" {
+      [32m+[0m[0m arn                   = (known after apply)
+      [32m+[0m[0m cidr_blocks           = (known after apply)
+      [32m+[0m[0m dns_entry             = (known after apply)
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m ip_address_type       = (known after apply)
+      [32m+[0m[0m network_interface_ids = (known after apply)
+      [32m+[0m[0m owner_id              = (known after apply)
+      [32m+[0m[0m policy                = (known after apply)
+      [32m+[0m[0m prefix_list_id        = (known after apply)
+      [32m+[0m[0m private_dns_enabled   = true
+      [32m+[0m[0m region                = "us-east-1"
+      [32m+[0m[0m requester_managed     = (known after apply)
+      [32m+[0m[0m route_table_ids       = (known after apply)
+      [32m+[0m[0m security_group_ids    = (known after apply)
+      [32m+[0m[0m service_name          = "com.amazonaws.us-east-1.ec2"
+      [32m+[0m[0m service_region        = (known after apply)
+      [32m+[0m[0m state                 = (known after apply)
+      [32m+[0m[0m subnet_ids            = (known after apply)
+      [32m+[0m[0m tags                  = {
+          [32m+[0m[0m "Name" = "d-vpc-endpoint-ec2"
+        }
+      [32m+[0m[0m tags_all              = {
+          [32m+[0m[0m "Name" = "d-vpc-endpoint-ec2"
+        }
+      [32m+[0m[0m vpc_endpoint_type     = "Interface"
+      [32m+[0m[0m vpc_id                = (known after apply)
+
+      [32m+[0m[0m dns_options (known after apply)
+
+      [32m+[0m[0m subnet_configuration (known after apply)
+    }
+
+[1m  # aws_vpc_endpoint.endpoints["ecr.api"][0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc_endpoint" "endpoints" {
+      [32m+[0m[0m arn                   = (known after apply)
+      [32m+[0m[0m cidr_blocks           = (known after apply)
+      [32m+[0m[0m dns_entry             = (known after apply)
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m ip_address_type       = (known after apply)
+      [32m+[0m[0m network_interface_ids = (known after apply)
+      [32m+[0m[0m owner_id              = (known after apply)
+      [32m+[0m[0m policy                = (known after apply)
+      [32m+[0m[0m prefix_list_id        = (known after apply)
+      [32m+[0m[0m private_dns_enabled   = true
+      [32m+[0m[0m region                = "us-east-1"
+      [32m+[0m[0m requester_managed     = (known after apply)
+      [32m+[0m[0m route_table_ids       = (known after apply)
+      [32m+[0m[0m security_group_ids    = (known after apply)
+      [32m+[0m[0m service_name          = "com.amazonaws.us-east-1.ecr.api"
+      [32m+[0m[0m service_region        = (known after apply)
+      [32m+[0m[0m state                 = (known after apply)
+      [32m+[0m[0m subnet_ids            = (known after apply)
+      [32m+[0m[0m tags                  = {
+          [32m+[0m[0m "Name" = "d-vpc-endpoint-ecr.api"
+        }
+      [32m+[0m[0m tags_all              = {
+          [32m+[0m[0m "Name" = "d-vpc-endpoint-ecr.api"
+        }
+      [32m+[0m[0m vpc_endpoint_type     = "Interface"
+      [32m+[0m[0m vpc_id                = (known after apply)
+
+      [32m+[0m[0m dns_options (known after apply)
+
+      [32m+[0m[0m subnet_configuration (known after apply)
+    }
+
+[1m  # aws_vpc_endpoint.endpoints["ecr.dkr"][0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc_endpoint" "endpoints" {
+      [32m+[0m[0m arn                   = (known after apply)
+      [32m+[0m[0m cidr_blocks           = (known after apply)
+      [32m+[0m[0m dns_entry             = (known after apply)
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m ip_address_type       = (known after apply)
+      [32m+[0m[0m network_interface_ids = (known after apply)
+      [32m+[0m[0m owner_id              = (known after apply)
+      [32m+[0m[0m policy                = (known after apply)
+      [32m+[0m[0m prefix_list_id        = (known after apply)
+      [32m+[0m[0m private_dns_enabled   = true
+      [32m+[0m[0m region                = "us-east-1"
+      [32m+[0m[0m requester_managed     = (known after apply)
+      [32m+[0m[0m route_table_ids       = (known after apply)
+      [32m+[0m[0m security_group_ids    = (known after apply)
+      [32m+[0m[0m service_name          = "com.amazonaws.us-east-1.ecr.dkr"
+      [32m+[0m[0m service_region        = (known after apply)
+      [32m+[0m[0m state                 = (known after apply)
+      [32m+[0m[0m subnet_ids            = (known after apply)
+      [32m+[0m[0m tags                  = {
+          [32m+[0m[0m "Name" = "d-vpc-endpoint-ecr.dkr"
+        }
+      [32m+[0m[0m tags_all              = {
+          [32m+[0m[0m "Name" = "d-vpc-endpoint-ecr.dkr"
+        }
+      [32m+[0m[0m vpc_endpoint_type     = "Interface"
+      [32m+[0m[0m vpc_id                = (known after apply)
+
+      [32m+[0m[0m dns_options (known after apply)
+
+      [32m+[0m[0m subnet_configuration (known after apply)
+    }
+
+[1m  # aws_vpc_endpoint.endpoints["elasticloadbalancing"][0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc_endpoint" "endpoints" {
+      [32m+[0m[0m arn                   = (known after apply)
+      [32m+[0m[0m cidr_blocks           = (known after apply)
+      [32m+[0m[0m dns_entry             = (known after apply)
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m ip_address_type       = (known after apply)
+      [32m+[0m[0m network_interface_ids = (known after apply)
+      [32m+[0m[0m owner_id              = (known after apply)
+      [32m+[0m[0m policy                = (known after apply)
+      [32m+[0m[0m prefix_list_id        = (known after apply)
+      [32m+[0m[0m private_dns_enabled   = true
+      [32m+[0m[0m region                = "us-east-1"
+      [32m+[0m[0m requester_managed     = (known after apply)
+      [32m+[0m[0m route_table_ids       = (known after apply)
+      [32m+[0m[0m security_group_ids    = (known after apply)
+      [32m+[0m[0m service_name          = "com.amazonaws.us-east-1.elasticloadbalancing"
+      [32m+[0m[0m service_region        = (known after apply)
+      [32m+[0m[0m state                 = (known after apply)
+      [32m+[0m[0m subnet_ids            = (known after apply)
+      [32m+[0m[0m tags                  = {
+          [32m+[0m[0m "Name" = "d-vpc-endpoint-elasticloadbalancing"
+        }
+      [32m+[0m[0m tags_all              = {
+          [32m+[0m[0m "Name" = "d-vpc-endpoint-elasticloadbalancing"
+        }
+      [32m+[0m[0m vpc_endpoint_type     = "Interface"
+      [32m+[0m[0m vpc_id                = (known after apply)
+
+      [32m+[0m[0m dns_options (known after apply)
+
+      [32m+[0m[0m subnet_configuration (known after apply)
+    }
+
+[1m  # aws_vpc_endpoint.endpoints["logs"][0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc_endpoint" "endpoints" {
+      [32m+[0m[0m arn                   = (known after apply)
+      [32m+[0m[0m cidr_blocks           = (known after apply)
+      [32m+[0m[0m dns_entry             = (known after apply)
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m ip_address_type       = (known after apply)
+      [32m+[0m[0m network_interface_ids = (known after apply)
+      [32m+[0m[0m owner_id              = (known after apply)
+      [32m+[0m[0m policy                = (known after apply)
+      [32m+[0m[0m prefix_list_id        = (known after apply)
+      [32m+[0m[0m private_dns_enabled   = true
+      [32m+[0m[0m region                = "us-east-1"
+      [32m+[0m[0m requester_managed     = (known after apply)
+      [32m+[0m[0m route_table_ids       = (known after apply)
+      [32m+[0m[0m security_group_ids    = (known after apply)
+      [32m+[0m[0m service_name          = "com.amazonaws.us-east-1.logs"
+      [32m+[0m[0m service_region        = (known after apply)
+      [32m+[0m[0m state                 = (known after apply)
+      [32m+[0m[0m subnet_ids            = (known after apply)
+      [32m+[0m[0m tags                  = {
+          [32m+[0m[0m "Name" = "d-vpc-endpoint-logs"
+        }
+      [32m+[0m[0m tags_all              = {
+          [32m+[0m[0m "Name" = "d-vpc-endpoint-logs"
+        }
+      [32m+[0m[0m vpc_endpoint_type     = "Interface"
+      [32m+[0m[0m vpc_id                = (known after apply)
+
+      [32m+[0m[0m dns_options (known after apply)
+
+      [32m+[0m[0m subnet_configuration (known after apply)
+    }
+
+[1m  # aws_vpc_endpoint.endpoints["xray"][0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc_endpoint" "endpoints" {
+      [32m+[0m[0m arn                   = (known after apply)
+      [32m+[0m[0m cidr_blocks           = (known after apply)
+      [32m+[0m[0m dns_entry             = (known after apply)
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m ip_address_type       = (known after apply)
+      [32m+[0m[0m network_interface_ids = (known after apply)
+      [32m+[0m[0m owner_id              = (known after apply)
+      [32m+[0m[0m policy                = (known after apply)
+      [32m+[0m[0m prefix_list_id        = (known after apply)
+      [32m+[0m[0m private_dns_enabled   = true
+      [32m+[0m[0m region                = "us-east-1"
+      [32m+[0m[0m requester_managed     = (known after apply)
+      [32m+[0m[0m route_table_ids       = (known after apply)
+      [32m+[0m[0m security_group_ids    = (known after apply)
+      [32m+[0m[0m service_name          = "com.amazonaws.us-east-1.xray"
+      [32m+[0m[0m service_region        = (known after apply)
+      [32m+[0m[0m state                 = (known after apply)
+      [32m+[0m[0m subnet_ids            = (known after apply)
+      [32m+[0m[0m tags                  = {
+          [32m+[0m[0m "Name" = "d-vpc-endpoint-xray"
+        }
+      [32m+[0m[0m tags_all              = {
+          [32m+[0m[0m "Name" = "d-vpc-endpoint-xray"
+        }
+      [32m+[0m[0m vpc_endpoint_type     = "Interface"
+      [32m+[0m[0m vpc_id                = (known after apply)
+
+      [32m+[0m[0m dns_options (known after apply)
+
+      [32m+[0m[0m subnet_configuration (known after apply)
+    }
+
+[1m  # aws_vpc_security_group_egress_rule.eks_cluster_sg_10250_egress_rule[0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc_security_group_egress_rule" "eks_cluster_sg_10250_egress_rule" {
+      [32m+[0m[0m arn                          = (known after apply)
+      [32m+[0m[0m description                  = "Allow egress traffic on port 10250 (Kubelet API) within the security group"
+      [32m+[0m[0m from_port                    = 10250
+      [32m+[0m[0m id                           = (known after apply)
+      [32m+[0m[0m ip_protocol                  = "tcp"
+      [32m+[0m[0m referenced_security_group_id = (known after apply)
+      [32m+[0m[0m region                       = "us-east-1"
+      [32m+[0m[0m security_group_id            = (known after apply)
+      [32m+[0m[0m security_group_rule_id       = (known after apply)
+      [32m+[0m[0m tags_all                     = {}
+      [32m+[0m[0m to_port                      = 10250
+    }
+
+[1m  # aws_vpc_security_group_egress_rule.eks_cluster_sg_443_egress_rule[0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc_security_group_egress_rule" "eks_cluster_sg_443_egress_rule" {
+      [32m+[0m[0m arn                          = (known after apply)
+      [32m+[0m[0m description                  = "Allow egress traffic on port 443 (HTTPS) within the security group"
+      [32m+[0m[0m from_port                    = 443
+      [32m+[0m[0m id                           = (known after apply)
+      [32m+[0m[0m ip_protocol                  = "tcp"
+      [32m+[0m[0m referenced_security_group_id = (known after apply)
+      [32m+[0m[0m region                       = "us-east-1"
+      [32m+[0m[0m security_group_id            = (known after apply)
+      [32m+[0m[0m security_group_rule_id       = (known after apply)
+      [32m+[0m[0m tags_all                     = {}
+      [32m+[0m[0m to_port                      = 443
+    }
+
+[1m  # aws_vpc_security_group_egress_rule.eks_cluster_sg_tcp_53_egress_rule[0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc_security_group_egress_rule" "eks_cluster_sg_tcp_53_egress_rule" {
+      [32m+[0m[0m arn                          = (known after apply)
+      [32m+[0m[0m description                  = "Allow egress traffic on port 53 (DNS) for TCP within the security group"
+      [32m+[0m[0m from_port                    = 53
+      [32m+[0m[0m id                           = (known after apply)
+      [32m+[0m[0m ip_protocol                  = "tcp"
+      [32m+[0m[0m referenced_security_group_id = (known after apply)
+      [32m+[0m[0m region                       = "us-east-1"
+      [32m+[0m[0m security_group_id            = (known after apply)
+      [32m+[0m[0m security_group_rule_id       = (known after apply)
+      [32m+[0m[0m tags_all                     = {}
+      [32m+[0m[0m to_port                      = 53
+    }
+
+[1m  # aws_vpc_security_group_egress_rule.eks_cluster_sg_udp_53_egress_rule[0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc_security_group_egress_rule" "eks_cluster_sg_udp_53_egress_rule" {
+      [32m+[0m[0m arn                          = (known after apply)
+      [32m+[0m[0m description                  = "Allow egress traffic on port 53 (DNS) for UDP within the security group"
+      [32m+[0m[0m from_port                    = 53
+      [32m+[0m[0m id                           = (known after apply)
+      [32m+[0m[0m ip_protocol                  = "udp"
+      [32m+[0m[0m referenced_security_group_id = (known after apply)
+      [32m+[0m[0m region                       = "us-east-1"
+      [32m+[0m[0m security_group_id            = (known after apply)
+      [32m+[0m[0m security_group_rule_id       = (known after apply)
+      [32m+[0m[0m tags_all                     = {}
+      [32m+[0m[0m to_port                      = 53
+    }
+
+[1m  # aws_vpc_security_group_ingress_rule.endpoints_sg_443_ingress_rule[0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc_security_group_ingress_rule" "endpoints_sg_443_ingress_rule" {
+      [32m+[0m[0m arn                    = (known after apply)
+      [32m+[0m[0m cidr_ipv4              = "10.0.0.0/16"
+      [32m+[0m[0m from_port              = 443
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m ip_protocol            = "tcp"
+      [32m+[0m[0m region                 = "us-east-1"
+      [32m+[0m[0m security_group_id      = (known after apply)
+      [32m+[0m[0m security_group_rule_id = (known after apply)
+      [32m+[0m[0m tags_all               = {}
+      [32m+[0m[0m to_port                = 443
+    }
+
+[1mPlan:[0m 69 to add, 0 to change, 0 to destroy.
+[0m
+Changes to Outputs:
+  [32m+[0m[0m cluster_name               = "d-eks-cluster"
+  [32m+[0m[0m endpoint                   = (known after apply)
+  [32m+[0m[0m image_builder_pipeline_arn = (known after apply)
+  [32m+[0m[0m image_builder_recipe_arn   = (known after apply)
+[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.

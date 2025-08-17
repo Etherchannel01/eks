@@ -8,18 +8,6 @@ vpc_cidr = "10.0.0.0/16"
 
 environment = "development"
 
-
-
-
-
-
-
-
-
-
-
-
-
 #############################################################################################################
 #                                              EKS CONFIGURATION                                           #
 #############################################################################################################
@@ -34,17 +22,6 @@ eks_scaling_config = {
 eks_update_config = {
     max_unavailable = 1
 }
-
-# eks_addons = [
-#         "vpc-cni",
-#         # "kube-proxy",
-#         # "aws-ebs-csi-driver",
-#         # "aws-efs-csi-driver",
-#         # "aws-mountpoint-s3-csi-driver",
-#         # "aws-guardduty-agent",
-#         # "amazon-cloudwatch-observability",
-#         # "eks-pod-identity-agent"
-# ]
 
 eks_addons = {
   vpc-cni = {

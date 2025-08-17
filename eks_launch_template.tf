@@ -1,7 +1,19 @@
+data "aws_ami" "eks_ami" {
+    most_recent = true
+    owners      = ["self"]
+    
+    filter {
+        name   = "name"
+        values = ["${local.eid}_eks_custom_ami*"]
+    }
+    depends_on = [aws_imagebuilder_image_pipeline.eks_custom_pipeline]
+  
+}
+
 resource "aws_launch_template" "eks_node_launch_template" {
 
-    name_prefix   = "${local.eid}-eks-node-launch-template"
-    image_id      = "ami-05ec3f7f324a54c7f"
+    name_prefix   = "${local.eid}_eks_node_launch_template"
+    image_id      = data.aws_ami.eks_ami.id
     instance_type = local.instance_types
     user_data     = base64encode(templatefile("${path.module}/userdata/user_data.tpl", {
         cluster_name          = local.cluster_name
@@ -12,18 +24,16 @@ resource "aws_launch_template" "eks_node_launch_template" {
     
     # key_name = "eks-keypair"
     
-    #vpc_security_group_ids = [aws_security_group.eks_node_sg.id]
-    
     
     tag_specifications {
         resource_type = "instance"
         tags = {
-        Name = "${local.eid}-eks-node"
+        Name = "${local.eid}_eks_node"
         }
     }
     
     lifecycle {
         create_before_destroy = true
     }
-  
+  depends_on = [data.aws_ami.eks_ami]
 }

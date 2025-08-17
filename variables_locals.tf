@@ -39,22 +39,9 @@ eks_nat_gateway_ip_zone3 = cidrhost(cidrsubnet(var.vpc_cidr, 8, 5), 254)
 }
 
 
-data "aws_eks_cluster" "eks_cluster" {
-    name = aws_eks_cluster.eks_cluster.name
-}
 
-output "certificate_authority" {
-    value = data.aws_eks_cluster.eks_cluster.certificate_authority[0].data
-}
 
-output "endpoint" {
-    value = data.aws_eks_cluster.eks_cluster.endpoint
-}
 
-output "service_ipv4_cidr" {
-    value = data.aws_eks_cluster.eks_cluster.kubernetes_network_config[0].service_ipv4_cidr
-  
-}
 locals {
   cluster_name          = aws_eks_cluster.eks_cluster.name
   api_server_endpoint   = data.aws_eks_cluster.eks_cluster.endpoint
