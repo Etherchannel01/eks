@@ -1,6 +1,6 @@
 locals {
   availability_zones = ["${var.region}a", "${var.region}b", "${var.region}c"]
-  eid = substr(var.environment, 0, 1)
+  eid                = substr(var.environment, 0, 1)
 
   # EKS Cluster Configuration
   instance_types = "t3.medium"
@@ -9,9 +9,9 @@ locals {
   eks_addons     = var.eks_addons
 
   # EKS Private Subnets    
-  eks_cidr_subnet_zone1 = cidrsubnet(var.vpc_cidr, 8, 0) 
+  eks_cidr_subnet_zone1 = cidrsubnet(var.vpc_cidr, 8, 0)
   eks_cidr_subnet_zone2 = cidrsubnet(var.vpc_cidr, 8, 1)
-  eks_cidr_subnet_zone3 = cidrsubnet(var.vpc_cidr, 8, 2) 
+  eks_cidr_subnet_zone3 = cidrsubnet(var.vpc_cidr, 8, 2)
 
   # EKS Public Subnets
   eks_public_cidr_subnet_zone1 = cidrsubnet(var.vpc_cidr, 8, 3)

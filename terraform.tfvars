@@ -2,7 +2,7 @@
 #                                             DEFAULT AWS VALUES                                           #
 #############################################################################################################
 
-region   = "us-east-1"
+region = "us-east-1"
 
 vpc_cidr = "10.0.0.0/16"
 
@@ -11,22 +11,22 @@ environment = "development"
 #############################################################################################################
 #                                              EKS CONFIGURATION                                           #
 #############################################################################################################
-eks_version = "1.33"
+eks_version = "1.36"
 
 eks_scaling_config = {
-    desired_size = 1
-    max_size     = 1
-    min_size     = 1
+  desired_size = 1
+  max_size     = 1
+  min_size     = 1
 }
 
 eks_update_config = {
-    max_unavailable = 1
+  max_unavailable = 1
 }
 
 eks_addons = {
   vpc-cni = {
     version = "v1.20.1-eksbuild.1"
-  }    
+  }
 }
 
 

@@ -23,11 +23,13 @@ variable "vpc_endpoints" {
   type        = list(string)
   default = [
     "ec2",
-    "logs", 
-    "xray", 
-    "elasticloadbalancing", 
-    "ecr.api", 
-    "ecr.dkr"
+    "logs",
+    "xray",
+    "elasticloadbalancing",
+    "ecr.api",
+    "ecr.dkr",
+    "eks",
+    "eks-auth"
   ]
 }
 

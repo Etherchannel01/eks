@@ -1,7 +1,6 @@
-
 module "eks" {
   source = "./modules/eks"
-  
+
   region             = var.region
   vpc_cidr           = var.vpc_cidr
   environment        = var.environment

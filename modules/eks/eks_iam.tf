@@ -296,7 +296,7 @@ data "aws_iam_policy_document" "AWSLoadBalancerControllerIAMPolicy" {
     condition {
       test     = "StringEquals"
       variable = "elasticloadbalancing:CreateAction"
-      values   = [
+      values = [
         "CreateTargetGroup",
         "CreateLoadBalancer",
       ]
@@ -345,7 +345,7 @@ resource "aws_iam_policy" "AWSLoadBalancerControllerIAMPolicy" {
   name        = "${local.eid}-AWSLoadBalancerControllerIAMPolicy"
   description = "IAM policy for AWS Load Balancer Controller"
   policy      = data.aws_iam_policy_document.AWSLoadBalancerControllerIAMPolicy.json
-  
+
 }
 
 

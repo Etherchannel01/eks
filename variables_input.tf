@@ -1,22 +1,22 @@
 variable "region" {
-    description = "AWS region"
-    type = string
+  description = "AWS region"
+  type        = string
 }
 
 
 variable "vpc_cidr" {
-    description = "CIDR block for the VPC"
-    type = string
+  description = "CIDR block for the VPC"
+  type        = string
 }
 
 variable "environment" {
-    description = "Environment"
-    type = string
+  description = "Environment"
+  type        = string
 }
 
 variable "eks_version" {
-    description = "EKS version"
-    type = string
+  description = "EKS version"
+  type        = string
 }
 
 variable "vpc_endpoints" {
@@ -24,10 +24,10 @@ variable "vpc_endpoints" {
   type        = list(string)
   default = [
     "ec2",
-    "logs", 
-    "xray", 
-    "elasticloadbalancing", 
-    "ecr.api", 
+    "logs",
+    "xray",
+    "elasticloadbalancing",
+    "ecr.api",
     "ecr.dkr"
   ]
 }
@@ -43,15 +43,15 @@ variable "eks_addons" {
 
 
 variable "eks_scaling_config" {
-    description = "EKS scaling configuration"
-    type        = map(number)
-    default = {}
-  
+  description = "EKS scaling configuration"
+  type        = map(number)
+  default     = {}
+
 }
 
 variable "eks_update_config" {
-    description = "EKS update configuration"
-    type        = map(number)
-    default = {}
-  
+  description = "EKS update configuration"
+  type        = map(number)
+  default     = {}
+
 }

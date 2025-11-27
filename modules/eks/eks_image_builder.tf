@@ -3,17 +3,17 @@ data "aws_iam_policy_document" "image_builder_instance_assume_role_policy" {
   statement {
     actions = ["sts:AssumeRole"]
     principals {
-      type = "Service"
+      type        = "Service"
       identifiers = ["ec2.amazonaws.com"]
     }
   }
-  
+
 }
 
 resource "aws_iam_role" "image_builder_instance_role" {
   assume_role_policy = data.aws_iam_policy_document.image_builder_instance_assume_role_policy.json
   name               = "${local.eid}_image_builder_instance_role"
-  
+
 }
 
 
@@ -98,11 +98,11 @@ data "aws_ami" "eks_worker_ami" {
 
 locals {
   block_devices = {
-    "/dev/xvda" = { size = 80 }   # Root volume
-    "/dev/xvdf" = { size = 20 }   # /var/log
-    "/dev/xvdg" = { size = 20 }   # /var/log/audit
-    "/dev/xvdh" = { size = 20 }   # /tmp
-    "/dev/xvdi" = { size = 20 }   # /var/tmp
+    "/dev/xvda" = { size = 80 } # Root volume
+    "/dev/xvdf" = { size = 20 } # /var/log
+    "/dev/xvdg" = { size = 20 } # /var/log/audit
+    "/dev/xvdh" = { size = 20 } # /tmp
+    "/dev/xvdi" = { size = 20 } # /var/tmp
   }
 }
 
@@ -117,26 +117,26 @@ resource "aws_imagebuilder_image_recipe" "eks_custom_recipe" {
   component {
     component_arn = "arn:aws:imagebuilder:us-east-1:aws:component/stig-build-linux/1.0.5/1"
     parameter {
-      name = "InstallPackages"
+      name  = "InstallPackages"
       value = "Yes"
     }
     parameter {
-      name = "SetDoDConsentBanner"
+      name  = "SetDoDConsentBanner"
       value = "Yes"
     }
   }
-  
-dynamic "block_device_mapping" {
-  for_each = local.block_devices
-  content {
-    device_name = block_device_mapping.key
-    ebs {
-      volume_size           = block_device_mapping.value.size
-      volume_type           = "gp3"
-      delete_on_termination = true
+
+  dynamic "block_device_mapping" {
+    for_each = local.block_devices
+    content {
+      device_name = block_device_mapping.key
+      ebs {
+        volume_size           = block_device_mapping.value.size
+        volume_type           = "gp3"
+        delete_on_termination = true
+      }
     }
   }
-}
 
   tags = {
     Name = "${local.eid}_eks_custom_recipe"
@@ -169,15 +169,15 @@ resource "aws_imagebuilder_distribution_configuration" "eks_custom_distribution"
 
 # Image Builder pipeline
 resource "aws_imagebuilder_image_pipeline" "eks_custom_pipeline" {
-  name                              = "${local.eid}_eks_custom_pipeline"
-  description                       = "Pipeline for building EKS custom AMI"
-  image_recipe_arn                  = aws_imagebuilder_image_recipe.eks_custom_recipe.arn
-  infrastructure_configuration_arn  = aws_imagebuilder_infrastructure_configuration.eks_custom_ami.arn
-  distribution_configuration_arn    = aws_imagebuilder_distribution_configuration.eks_custom_distribution.arn
-  status                            = "ENABLED"
+  name                             = "${local.eid}_eks_custom_pipeline"
+  description                      = "Pipeline for building EKS custom AMI"
+  image_recipe_arn                 = aws_imagebuilder_image_recipe.eks_custom_recipe.arn
+  infrastructure_configuration_arn = aws_imagebuilder_infrastructure_configuration.eks_custom_ami.arn
+  distribution_configuration_arn   = aws_imagebuilder_distribution_configuration.eks_custom_distribution.arn
+  status                           = "ENABLED"
 
   schedule {
-    schedule_expression                 = "cron(0 8 1-7 ? 7 *)"
+    schedule_expression                = "cron(0 8 1-7 ? 7 *)"
     pipeline_execution_start_condition = "EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE"
   }
 
