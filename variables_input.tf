@@ -1,30 +1,22 @@
 variable "region" {
     description = "AWS region"
     type = string
-    default = ""
-  
 }
 
 
 variable "vpc_cidr" {
     description = "CIDR block for the VPC"
     type = string
-    default = ""
-  
 }
 
 variable "environment" {
     description = "Environment"
     type = string
-    default = ""
-  
 }
 
 variable "eks_version" {
     description = "EKS version"
     type = string
-    default = ""
-  
 }
 
 variable "vpc_endpoints" {

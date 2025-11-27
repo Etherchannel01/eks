@@ -1,0 +1,134 @@
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: MIT-0
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this
+# software and associated documentation files (the "Software"), to deal in the Software
+# without restriction, including without limitation the rights to use, copy, modify,
+# merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+# INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+# PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+# SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+name: 'STIG-Build-Linux'
+description: 'Applies the high, medium, and/or low severity STIG settings for Amazon Linux 2, Amazon Linux 2023, RHEL 7, CentOS Linux 7, CentOS Linux 8, CentOS Stream 9, RHEL 8, RHEL 9, Ubuntu 18.04, Ubuntu 20.04, Ubuntu 22.04, Ubuntu 24.04, SLES 12, and SLES 15 operating systems. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/ib-stig.html.'
+schemaVersion: 1.0
+constants:
+  - FileName:
+      type: string
+      value: 'LinuxAWSConfigureSTIG.tgz'
+  - StigFolderPath:
+      type: string
+      value: linux_stigs
+  - ExecutableName:
+      type: string
+      value: 'main.sh'
+
+parameters:
+  - Level:
+      type: string
+      default: 'High'
+      description: "(Optional) Specify the STIG level. Default is High."
+      allowedValues:
+        - 'High'
+        - 'Medium'
+        - 'Low'
+  - InstallPackages:
+      type: string
+      default: 'No'
+      description: "(Optional) Installs the required STIG packages for maximum compliance. Default is No."
+      allowedValues:
+        - 'Yes'
+        - 'No'
+  - SetDoDConsentBanner:
+      type: string
+      default: 'No'
+      description: "(Optional) Sets the Department of Defense (DoD) consent banner to display at login. Default is No."
+      allowedValues:
+        - 'Yes'
+        - 'No'
+
+phases:
+  - name: build
+    steps:
+      - name: GetWorkingDirectory
+        action: ExecuteBash
+        inputs:
+          commands:
+            - "echo ${WORKING_DIRECTORY}"
+
+      - name: CreateSTIGDirectory
+        action: CreateFolder
+        inputs:
+          - path: "{{ build.GetWorkingDirectory.outputs.stdout }}/{{ StigFolderPath }}"
+            permissions: 755
+            overwrite: true
+
+      - name: DeterminePackageManager
+        action: ExecuteBash
+        if:
+          fileExists: '/etc/os-release'
+          else: Abort
+        inputs:
+          commands:
+            - |
+              FILE=/etc/os-release
+              . $FILE
+              RELEASE="$ID${VERSION_ID:+.${VERSION_ID}}"
+              case "${RELEASE}" in
+                amzn.*|centos.*|rhel.*)
+                  echo yum
+                  ;;
+                ubuntu.*)
+                  echo apt
+                  ;;
+                sles.*)
+                  echo zypper
+                  ;;
+                *)
+                  echo "Operating System '${RELEASE}' is not supported. Exiting."
+                  exit 1
+                  ;;
+              esac
+
+      - name: DownloadSTIG
+        action: WebDownload
+        inputs:
+          - source: 'https://s3.us-east-1.amazonaws.com/aws-windows-downloads-us-east-1/STIG/Linux/Latest/{{ FileName }}'
+            destination: '{{ build.GetWorkingDirectory.outputs.stdout }}/{{ StigFolderPath }}/{{ FileName }}'
+
+      - name: UntarSTIG
+        action: ExecuteBash
+        inputs:
+          commands:
+            - |
+              PACKAGE_MANAGER='{{build.DeterminePackageManager.outputs.stdout}}'
+              if command -v tar &>/dev/null; then
+                tar -xvf "{{ build.GetWorkingDirectory.outputs.stdout }}/{{ StigFolderPath }}/{{ FileName }}" --strip-components 1 --directory "{{ build.GetWorkingDirectory.outputs.stdout }}/{{ StigFolderPath }}"
+              else
+                $PACKAGE_MANAGER install -y tar &>/dev/null
+                tar -xvf "{{ build.GetWorkingDirectory.outputs.stdout }}/{{ StigFolderPath }}/{{ FileName }}" --strip-components 1 --directory "{{ build.GetWorkingDirectory.outputs.stdout }}/{{ StigFolderPath }}"
+                $PACKAGE_MANAGER remove -y tar &>/dev/null
+              fi
+
+      - name: ExecuteSTIG
+        action: ExecuteBash
+        onFailure: Continue
+        maxAttempts: 5
+        inputs:
+          commands:
+            - |
+              cd "{{ build.GetWorkingDirectory.outputs.stdout }}/{{ StigFolderPath }}"
+              bash {{ ExecutableName }} -d "./" -l "{{ Level }}" -h "{{ InstallPackages }}" -s "{{ SetDoDConsentBanner }}" && exit 0 || {
+                echo "Failed to execute STIG."
+                exit 1
+              }
+
+      - name: Cleanup
+        action: DeleteFolder
+        inputs:
+          - path: "{{ build.GetWorkingDirectory.outputs.stdout }}/{{ StigFolderPath }}"
+            force: true

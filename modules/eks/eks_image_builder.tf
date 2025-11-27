@@ -1,24 +1,21 @@
 # IAM role for Image Builder instance
-resource "aws_iam_role" "image_builder_instance_role" {
-  name = "${local.eid}_image_builder_instance_role"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Principal = {
-          Service = "ec2.amazonaws.com"
-        }
-      }
-    ]
-  })
-
-  tags = {
-    Name = "${local.eid}_image_builder_instance_role"
+data "aws_iam_policy_document" "image_builder_instance_assume_role_policy" {
+  statement {
+    actions = ["sts:AssumeRole"]
+    principals {
+      type = "Service"
+      identifiers = ["ec2.amazonaws.com"]
+    }
   }
+  
 }
+
+resource "aws_iam_role" "image_builder_instance_role" {
+  assume_role_policy = data.aws_iam_policy_document.image_builder_instance_assume_role_policy.json
+  name               = "${local.eid}_image_builder_instance_role"
+  
+}
+
 
 # Attach required policies to the instance role
 resource "aws_iam_role_policy_attachment" "image_builder_instance_profile_policy" {
@@ -110,6 +107,7 @@ locals {
 }
 
 # Image Builder recipe
+
 resource "aws_imagebuilder_image_recipe" "eks_custom_recipe" {
   name         = "${local.eid}_eks_custom_recipe"
   description  = "Recipe for EKS custom AMI based on Amazon Linux 2023"
@@ -117,7 +115,15 @@ resource "aws_imagebuilder_image_recipe" "eks_custom_recipe" {
   version      = "1.0.0"
 
   component {
-    component_arn = aws_imagebuilder_component.eks_custom_component.arn
+    component_arn = "arn:aws:imagebuilder:us-east-1:aws:component/stig-build-linux/1.0.5/1"
+    parameter {
+      name = "InstallPackages"
+      value = "Yes"
+    }
+    parameter {
+      name = "SetDoDConsentBanner"
+      value = "Yes"
+    }
   }
   
 dynamic "block_device_mapping" {

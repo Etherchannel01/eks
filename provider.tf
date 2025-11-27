@@ -10,11 +10,17 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
-
-  # default_tags {
-  #   tags = {
-  #     Environment = var.environment
-  #   }
-  # }
+  region = var.region
 }
+
+# provider "helm" {
+#   kubernetes {
+#     host                   = var.kubernetes_host
+#     cluster_ca_certificate = base64decode(var.kubernetes_cluster_ca_certificate)
+#     token                  = var.kubernetes_token
+#   }
+# }
+
+# provider "rancher" {
+  
+#}
