@@ -18,19 +18,14 @@ variable "eks_version" {
   type        = string
 }
 
+variable "recipe_version" {
+  description = "Version of the EKS custom AMI recipe"
+  type        = string
+}
+
 variable "vpc_endpoints" {
   description = "List of AWS services for which VPC endpoints should be created"
   type        = list(string)
-  default = [
-    "ec2",
-    "logs",
-    "xray",
-    "elasticloadbalancing",
-    "ecr.api",
-    "ecr.dkr",
-    "eks",
-    "eks-auth"
-  ]
 }
 
 variable "eks_addons" {

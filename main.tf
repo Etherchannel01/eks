@@ -9,4 +9,5 @@ module "eks" {
   eks_addons         = var.eks_addons
   eks_scaling_config = var.eks_scaling_config
   eks_update_config  = var.eks_update_config
+  recipe_version     = var.recipe_version
 }

@@ -11,7 +11,8 @@ environment = "development"
 #############################################################################################################
 #                                              EKS CONFIGURATION                                           #
 #############################################################################################################
-eks_version = "1.36"
+eks_version = "1.34"
+recipe_version = "1.0.1"
 
 eks_scaling_config = {
   desired_size = 1
@@ -26,6 +27,9 @@ eks_update_config = {
 eks_addons = {
   vpc-cni = {
     version = "v1.20.1-eksbuild.1"
+  }
+  eks-pod-identity-agent = {
+    version = "v1.3.10-eksbuild.1"
   }
 }
 

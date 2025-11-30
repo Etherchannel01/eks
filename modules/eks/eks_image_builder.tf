@@ -89,7 +89,7 @@ resource "aws_imagebuilder_component" "eks_custom_component" {
 data "aws_ami" "eks_worker_ami" {
   filter {
     name   = "name"
-    values = ["amazon-eks-node-al2023-x86_64-standard-1.33-v*"]
+    values = ["amazon-eks-node-al2023-x86_64-standard-1.34-v*"]
   }
 
   most_recent = true
@@ -112,7 +112,7 @@ resource "aws_imagebuilder_image_recipe" "eks_custom_recipe" {
   name         = "${local.eid}_eks_custom_recipe"
   description  = "Recipe for EKS custom AMI based on Amazon Linux 2023"
   parent_image = data.aws_ami.eks_worker_ami.id
-  version      = "1.0.0"
+  version      = var.recipe_version
 
   component {
     component_arn = "arn:aws:imagebuilder:us-east-1:aws:component/stig-build-linux/1.0.5/1"
@@ -191,6 +191,18 @@ resource "aws_imagebuilder_image_pipeline" "eks_custom_pipeline" {
   }
 }
 
+# Run a build immediately (one-time) using the same recipe/infra/distribution
+resource "aws_imagebuilder_image" "eks_custom_image" {
+  image_recipe_arn                 = aws_imagebuilder_image_recipe.eks_custom_recipe.arn
+  infrastructure_configuration_arn = aws_imagebuilder_infrastructure_configuration.eks_custom_ami.arn
+  distribution_configuration_arn   = aws_imagebuilder_distribution_configuration.eks_custom_distribution.arn
+
+  depends_on = [aws_imagebuilder_image_pipeline.eks_custom_pipeline]
+
+  tags = {
+    Name = "${local.eid}_eks_custom_image_build"
+  }
+}
 # Data sources
 data "aws_region" "current" {}
 data "aws_caller_identity" "current" {}

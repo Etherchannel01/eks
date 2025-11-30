@@ -13,7 +13,7 @@ data "aws_ami" "eks_ami" {
 resource "aws_launch_template" "eks_node_launch_template" {
 
   name_prefix   = "${local.eid}_eks_node_launch_template"
-  image_id      = data.aws_ami.eks_ami.id
+  image_id      = tolist(aws_imagebuilder_image.eks_custom_image.output_resources[0].amis)[0].image
   instance_type = local.instance_types
   user_data = base64encode(templatefile("${path.module}/userdata/template.tpl", {
     cluster_name          = local.cluster_name

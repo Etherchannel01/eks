@@ -26,6 +26,7 @@ resource "aws_eks_cluster" "eks_cluster" {
     aws_vpc_endpoint.endpoints
   ]
 
+
 }
 
 resource "aws_eks_node_group" "eks_node_group" {
@@ -73,5 +74,9 @@ resource "aws_eks_addon" "eks_addons" {
   addon_name                  = each.key
   depends_on                  = [aws_eks_cluster.eks_cluster]
   resolve_conflicts_on_update = "OVERWRITE"
+
+  # provisioner "local-exec" {
+  #   command = "eksctl create iamserviceaccount --cluster=${aws_eks_cluster.eks_cluster.name} --namespace=kube-system --name=aws-load-balancer-controller --attach-policy-arn=${aws_iam_policy.AWSLoadBalancerControllerIAMPolicy.arn} --override-existing-serviceaccounts --region ${var.region} --approve"
+  # }
 
 }
